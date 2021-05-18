@@ -153,11 +153,11 @@ struct ScanQRView: View {
                                 return
                             }
                             
-                            var otp_counter = 0
-                            var otp_period = 30
+                            var otp_counter: UInt64 = 0
+                            var otp_period: Int = 30
                             
                             if counter != "" {
-                                if let counter = Int(counter) {
+                                if let counter = UInt64(counter) {
                                     otp_counter = counter
                                 } else if otp_type == .hotp {
                                     print("Incorrect Counter")
@@ -174,7 +174,7 @@ struct ScanQRView: View {
                                 }
                             }
                             
-                            let result = OTP(type: otp_type, issuer: issuer, accountname: accountname, secret: secret, digits: otp_digits, encryptions: encryptions, counter_period: otp_type == .hotp ? otp_counter : otp_period)
+                            let result = OTP(type: otp_type, issuer: issuer, accountname: accountname, secret: secret, digits: otp_digits, encryptions: encryptions, period: otp_period, counter: otp_counter)
                                                 
                             self.model.addOTP(otp: result)
                             

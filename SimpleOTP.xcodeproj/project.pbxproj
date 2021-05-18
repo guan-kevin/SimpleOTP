@@ -28,6 +28,7 @@
 		0A5D7A1226522921001E5946 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5D7A1126522921001E5946 /* MainView.swift */; };
 		0A5D7A1426522932001E5946 /* ScanQRView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5D7A1326522932001E5946 /* ScanQRView.swift */; };
 		0A5D7A1626522945001E5946 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5D7A1526522945001E5946 /* MainViewModel.swift */; };
+		0A99879B26538F9700723132 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A99879A26538F9700723132 /* TimerView.swift */; };
 		4B242008ACE6367CB67F0E5D /* Pods_SimpleOTP_WatchKit_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D24AA5D7A9FCACAE4317B25 /* Pods_SimpleOTP_WatchKit_Extension.framework */; };
 		8C7BAF292BAB2C0B55C5962C /* Pods_SimpleOTP_WatchKit_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B33C8FCA7256873AB56F8834 /* Pods_SimpleOTP_WatchKit_App.framework */; };
 		F7AEAF4FA6166841EFD48CE5 /* Pods_SimpleOTP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77ACF5A49E3F6B84F62C32C1 /* Pods_SimpleOTP.framework */; };
@@ -100,6 +101,7 @@
 		0A5D7A1126522921001E5946 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		0A5D7A1326522932001E5946 /* ScanQRView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanQRView.swift; sourceTree = "<group>"; };
 		0A5D7A1526522945001E5946 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		0A99879A26538F9700723132 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		1D24AA5D7A9FCACAE4317B25 /* Pods_SimpleOTP_WatchKit_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SimpleOTP_WatchKit_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2364FFBA5DBBB8D86C93C5E7 /* Pods-SimpleOTP WatchKit Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleOTP WatchKit Extension.debug.xcconfig"; path = "Target Support Files/Pods-SimpleOTP WatchKit Extension/Pods-SimpleOTP WatchKit Extension.debug.xcconfig"; sourceTree = "<group>"; };
 		553A8CEA29CA5F3CAF2B2EF5 /* Pods-SimpleOTP WatchKit App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleOTP WatchKit App.release.xcconfig"; path = "Target Support Files/Pods-SimpleOTP WatchKit App/Pods-SimpleOTP WatchKit App.release.xcconfig"; sourceTree = "<group>"; };
@@ -250,6 +252,7 @@
 				0A5D7A1126522921001E5946 /* MainView.swift */,
 				0A5D7A1326522932001E5946 /* ScanQRView.swift */,
 				0A0D4A9726523A1600A1B2CA /* OTPRowView.swift */,
+				0A99879A26538F9700723132 /* TimerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -526,6 +529,7 @@
 				0A5D7A0C265228E3001E5946 /* OTPType.swift in Sources */,
 				0A5D79D62652289B001E5946 /* ContentView.swift in Sources */,
 				0A5D7A1026522915001E5946 /* LockView.swift in Sources */,
+				0A99879B26538F9700723132 /* TimerView.swift in Sources */,
 				0A0D4A9526522B2C00A1B2CA /* URL+Extension.swift in Sources */,
 				0A5D79D42652289B001E5946 /* SimpleOTPApp.swift in Sources */,
 				0A5D7A1426522932001E5946 /* ScanQRView.swift in Sources */,

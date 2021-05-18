@@ -13,6 +13,9 @@ struct MainView: View {
     @State var showQRScanner = false
     @State var showAddSheet = false
 
+    @State var date = Date()
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+
     var body: some View {
         NavigationView {
             VStack {
@@ -43,7 +46,12 @@ struct MainView: View {
                 } else {
                     List {
                         ForEach(self.model.otps) { otp in
-                            Text(otp.accountname)
+                            OTPRowView(otp: otp, date: self.$date)
+                        }
+                    }
+                    .onReceive(timer) { result in
+                        withAnimation {
+                            date = result
                         }
                     }
                 }
@@ -64,7 +72,7 @@ struct MainView: View {
                             }
                         } label: {
                             Image(systemName: "plus")
-                                .font(.system(size: 21))
+                                .font(.system(.title))
                         }
                     }
                 }
