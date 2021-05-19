@@ -14,6 +14,7 @@ struct OTPRowView: View {
     let otp: OTP
     
     @Binding var date: Date
+    @Binding var showCopied: Bool
 
     var body: some View {
         HStack {
@@ -69,6 +70,17 @@ struct OTPRowView: View {
         .onTapGesture {
             let pasteboard = UIPasteboard.general
             pasteboard.string = getCode() ?? ""
+            
+            guard self.showCopied == false else { return }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                withAnimation {
+                    self.showCopied = false
+                }
+            }
+                                            
+            withAnimation {
+                self.showCopied = true
+            }
         }
     }
     

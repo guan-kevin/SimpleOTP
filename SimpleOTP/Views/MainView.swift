@@ -17,6 +17,8 @@ struct MainView: View {
     @State var showDeleteConfirmation = false
     @State var deleteRow: IndexSet?
 
+    @State var showCopied = false
+
     @State var date = Date()
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
@@ -54,7 +56,7 @@ struct MainView: View {
                 } else {
                     List {
                         ForEach(self.model.otps) { otp in
-                            OTPRowView(otp: otp, date: self.$date)
+                            OTPRowView(otp: otp, date: self.$date, showCopied: self.$showCopied)
                         }
                         .onDelete(perform: self.deleteOTPRow)
                     }
@@ -77,6 +79,23 @@ struct MainView: View {
                     }
                 }
             }
+            .overlay(
+                ZStack {
+                    Rectangle()
+                        .frame(width: 150, height: 150)
+                        .foregroundColor(.gray)
+                        .cornerRadius(20)
+                        .opacity(0.8)
+                    VStack {
+                        Image(systemName: "checkmark")
+                            .font(.largeTitle)
+                        Text("Copied")
+                    }
+                    .zIndex(1)
+                }
+                .padding(.bottom, 150)
+                .opacity(self.showCopied ? 1 : 0)
+            )
             .navigationTitle("Simple OTP")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
