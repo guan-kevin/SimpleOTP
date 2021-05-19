@@ -22,5 +22,5 @@ struct OTP: Codable, Hashable, Identifiable {
     let digits: Int
     let encryptions: Encryption
     let period: Int
-    let counter: UInt64
+    var counter: UInt64
 }

@@ -18,22 +18,27 @@ final class MainViewModel: ObservableObject {
     init() {
         print("INIT")
         valet = Valet.valet(with: Identifier(nonEmpty: "com.kevinguan.simpleOTP")!, accessibility: .whenUnlocked)
+//        try! valet?.removeAllObjects()
         list()
     }
 
     func list() {
         if valet != nil {
             if let data = try? valet!.object(forKey: "otps") {
-                otps = decodeData(data: data, as: [OTP].self) ?? []
+                otps = EncryptionHelper.decodeData(data: data, as: [OTP].self) ?? []
             }
         }
     }
 
     func addOTP(otp: OTP) {
         otps.append(otp)
+        saveAllOTPs()
+    }
+
+    func saveAllOTPs() {
         if valet != nil {
             do {
-                if let data = encodeData(otps) {
+                if let data = EncryptionHelper.encodeData(otps) {
                     try valet?.setObject(data, forKey: "otps")
                 }
             } catch {
@@ -42,37 +47,13 @@ final class MainViewModel: ObservableObject {
         }
     }
 
-    func decodeData<T: Decodable>(data: Data, as type: T.Type) -> T? {
-        let decoder = JSONDecoder()
-        do {
-            let result = try decoder.decode(type, from: data)
-            return result
-        } catch {
-            print(error.localizedDescription)
-        }
-
-        return nil
-    }
-
-    func encodeData<T: Encodable>(_ object: T) -> Data? {
-        let encoder = JSONEncoder()
-        do {
-            let data = try encoder.encode(object)
-            return data
-        } catch {
-            print(error.localizedDescription)
-        }
-
-        return nil
-    }
-
     func isAppLocked() -> Bool {
         return isLocked
     }
 
     func unlockApp() {
         let laContext = LAContext()
-        let reason = "Lock SimpleOTP"
+        let reason = "Unlock SimpleOTP"
         laContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { success, error in
             if success {
                 DispatchQueue.main.async {

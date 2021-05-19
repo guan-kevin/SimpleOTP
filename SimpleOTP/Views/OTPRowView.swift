@@ -9,17 +9,29 @@ import SwiftOTP
 import SwiftUI
 
 struct OTPRowView: View {
-    let otp: OTP
-    @Binding var date: Date
+    @EnvironmentObject var model: MainViewModel
     
-    // @State var totp: TOTP?
-    // @State var hotp: HOTP?
+    let otp: OTP
+    
+    @Binding var date: Date
 
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
-                Text(getCode())
-                    .font(.system(.title, design: .monospaced))
+                let code = getCode()
+                
+                if code == nil {
+                    Text("Invalid OTP")
+                        .font(.system(.title, design: .monospaced))
+                } else {
+                    HStack(spacing: 0) {
+                        Text(code!.prefix(code!.count/2))
+                            .font(.system(.title, design: .monospaced))
+                        Text("•")
+                        Text(code!.suffix(Int(ceil(Double(code!.count)/2.0))))
+                            .font(.system(.title, design: .monospaced))
+                    }
+                }
                 
                 if otp.issuer != "" {
                     Text(otp.issuer! + " - " + otp.accountname)
@@ -37,7 +49,13 @@ struct OTPRowView: View {
                     .padding(.horizontal, 5)
             } else {
                 Button(action: {
-                    print("TEST")
+                    for i in 0 ..< model.otps.count {
+                        if model.otps[i].id == self.otp.id {
+                            model.otps[i].counter += 1
+                        }
+                    }
+                    
+                    self.model.saveAllOTPs()
                 }) {
                     Image(systemName: "play.circle")
                         .font(.system(size: 44, weight: .semibold, design: .rounded))
@@ -50,47 +68,11 @@ struct OTPRowView: View {
         .contentShape(Rectangle())
         .onTapGesture {
             let pasteboard = UIPasteboard.general
-            pasteboard.string = getCode()
+            pasteboard.string = getCode() ?? ""
         }
     }
     
-    func getCode() -> String {
-        if otp.type == .totp {
-            // if totp == nil {
-            guard let data = base32DecodeToData(otp.secret) else { return "Error" }
-                
-            var alg: OTPAlgorithm
-            switch otp.encryptions {
-            case .sha1:
-                alg = .sha1
-            case .sha256:
-                alg = .sha256
-            case .sha512:
-                alg = .sha512
-            }
-            let totp = TOTP(secret: data, digits: otp.digits, timeInterval: otp.period, algorithm: alg)
-            //  }
-            
-            return totp?.generate(time: date) ?? "Error"
-        } else if otp.type == .hotp {
-            // if hotp == nil {
-            guard let data = base32DecodeToData(otp.secret) else { return "Error" }
-                
-            var alg: OTPAlgorithm
-            switch otp.encryptions {
-            case .sha1:
-                alg = .sha1
-            case .sha256:
-                alg = .sha256
-            case .sha512:
-                alg = .sha512
-            }
-            let hotp = HOTP(secret: data, digits: otp.digits, algorithm: alg)
-            // }
-            
-            return hotp?.generate(counter: otp.counter) ?? "Error"
-        }
-        
-        return "Error"
+    func getCode(stringOnly: Bool = false) -> String? {
+        return OTPGenerator.getOTPCode(otp: otp, date: date)
     }
 }

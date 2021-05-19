@@ -10,8 +10,12 @@ import SwiftUI
 struct MainView: View {
     @EnvironmentObject var model: MainViewModel
 
-    @State var showQRScanner = false
+    @State var showAddOTP = false
+    @State var isQRScan = false
     @State var showAddSheet = false
+
+    @State var showDeleteConfirmation = false
+    @State var deleteRow: IndexSet?
 
     @State var date = Date()
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
@@ -19,7 +23,7 @@ struct MainView: View {
     var body: some View {
         NavigationView {
             VStack {
-                NavigationLink(destination: ScanQRView(), isActive: $showQRScanner) { EmptyView() }
+                NavigationLink(destination: AddOTPView(addViaScan: isQRScan), isActive: $showAddOTP) { EmptyView() }
                 if model.otps.count == 0 {
                     VStack(spacing: 15) {
                         Text("You don't have any account yet")
@@ -39,8 +43,12 @@ struct MainView: View {
                         .cornerRadius(10.0)
                         .actionSheet(isPresented: $showAddSheet) {
                             ActionSheet(title: Text("Let add your first account!"), buttons: [.default(Text("Scan QR Code")) {
-                                self.showQRScanner = true
-                            }, .default(Text("Add Manually")) {}, .cancel()])
+                                self.isQRScan = true
+                                self.showAddOTP = true
+                            }, .default(Text("Add Manually")) {
+                                self.isQRScan = false
+                                self.showAddOTP = true
+                            }, .cancel()])
                         }
                     }
                 } else {
@@ -48,11 +56,24 @@ struct MainView: View {
                         ForEach(self.model.otps) { otp in
                             OTPRowView(otp: otp, date: self.$date)
                         }
+                        .onDelete(perform: self.deleteOTPRow)
                     }
                     .onReceive(timer) { result in
                         withAnimation {
                             date = result
                         }
+                    }
+                    .alert(isPresented: $showDeleteConfirmation) {
+                        Alert(title: Text("Are you sure you want to delete this OTP"), message: Text("This OTP will be deleted immediately. You can't undo this action."), primaryButton: .destructive(Text("Delete")) {
+                            withAnimation {
+                                if self.deleteRow != nil {
+                                    self.model.otps.remove(atOffsets: self.deleteRow!)
+                                    self.model.saveAllOTPs()
+                                }
+                            }
+                        }, secondaryButton: .default(Text("Cancel")) {
+                            self.deleteRow = nil
+                        })
                     }
                 }
             }
@@ -62,12 +83,16 @@ struct MainView: View {
                     if model.otps.count > 0 {
                         Menu {
                             Button(action: {
-                                self.showQRScanner = true
+                                self.isQRScan = true
+                                self.showAddOTP = true
                             }) {
                                 Text("Scan QR Code")
                             }
 
-                            Button(action: {}) {
+                            Button(action: {
+                                self.isQRScan = false
+                                self.showAddOTP = true
+                            }) {
                                 Text("Add Manually")
                             }
                         } label: {
@@ -84,5 +109,10 @@ struct MainView: View {
                 }
             }
         }
+    }
+
+    private func deleteOTPRow(indexSet: IndexSet) {
+        self.deleteRow = indexSet
+        self.showDeleteConfirmation = true
     }
 }
