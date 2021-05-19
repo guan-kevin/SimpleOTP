@@ -10,6 +10,7 @@ import SwiftUI
 struct MainView: View {
     @EnvironmentObject var model: MainViewModel
 
+    @State var showSettings = false
     @State var showAddOTP = false
     @State var isQRScan = false
     @State var showAddSheet = false
@@ -26,6 +27,7 @@ struct MainView: View {
         NavigationView {
             VStack {
                 NavigationLink(destination: AddOTPView(addViaScan: isQRScan), isActive: $showAddOTP) { EmptyView() }
+                NavigationLink(destination: SettingsView(), isActive: $showSettings) { EmptyView() }
                 if model.otps.count == 0 {
                     VStack(spacing: 15) {
                         Text("You don't have any account yet")
@@ -122,7 +124,9 @@ struct MainView: View {
                 }
 
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button(action: {}) {
+                    Button(action: {
+                        self.showSettings = true
+                    }) {
                         Image(systemName: "gear")
                     }
                 }

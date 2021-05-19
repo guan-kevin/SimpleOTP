@@ -11,9 +11,9 @@ import Combine
 import SwiftUI
 
 struct AddOTPView: View {
-    @ObservedObject var addOTPModel = AddOTPViewModel()
     @EnvironmentObject var model: MainViewModel
     @Environment(\.presentationMode) var presentation
+    @ObservedObject var addOTPModel = AddOTPViewModel()
     
     let addViaScan: Bool
     
@@ -24,27 +24,29 @@ struct AddOTPView: View {
         Group {
             Group {
                 Form {
-                    if hasPermission {
-                        Button(action: {
-                            self.addOTPModel.showScanner = true
-                        }) {
-                            Label(
-                                title: { Text("Scan QR Code") },
-                                icon: { Image(systemName: "qrcode") }
-                            )
-                        }
-                    } else {
-                        HStack {
-                            Image(systemName: "exclamationmark.triangle")
-                                .font(.system(.title))
-                                .foregroundColor(.yellow)
-                            
-                            Text("SimpleOTP doesn't have permission to use your camera!")
-                                .foregroundColor(.red)
+                    if addViaScan {
+                        if hasPermission {
+                            Button(action: {
+                                self.addOTPModel.showScanner = true
+                            }) {
+                                Label(
+                                    title: { Text("Scan QR Code") },
+                                    icon: { Image(systemName: "qrcode") }
+                                )
+                            }
+                        } else {
+                            HStack {
+                                Image(systemName: "exclamationmark.triangle")
+                                    .font(.system(.title))
+                                    .foregroundColor(.yellow)
+                                
+                                Text("SimpleOTP doesn't have permission to use your camera!")
+                                    .foregroundColor(.red)
+                            }
                         }
                     }
                       
-                    Section {
+                    Section(header: Text("")) {
                         TextField("Account", text: $addOTPModel.accountname)
                         TextField("Issuer (Optional)", text: $addOTPModel.issuer)
                             

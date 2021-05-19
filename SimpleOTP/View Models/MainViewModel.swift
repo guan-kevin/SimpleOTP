@@ -48,10 +48,12 @@ final class MainViewModel: ObservableObject {
     }
 
     func isAppLocked() -> Bool {
-        return isLocked
+        return isLocked && UserDefaults.standard.bool(forKey: "enableBiometrics")
     }
 
     func unlockApp() {
+        guard isLocked, UserDefaults.standard.bool(forKey: "enableBiometrics") else { return }
+        
         let laContext = LAContext()
         let reason = "Unlock SimpleOTP"
         laContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { success, error in

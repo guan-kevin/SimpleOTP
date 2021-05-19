@@ -12,7 +12,7 @@ struct ContentView: View {
     @EnvironmentObject var model: MainViewModel
     
     var body: some View {
-        if model.isLocked {
+        if model.isAppLocked() {
             LockView()
         } else {
             MainView()
