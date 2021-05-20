@@ -20,6 +20,8 @@ struct MainView: View {
 
     @State var showCopied = false
 
+    @State var currentEditMode: EditMode = .inactive
+
     @State var date = Date()
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
@@ -61,6 +63,7 @@ struct MainView: View {
                             OTPRowView(otp: otp, date: self.$date, showCopied: self.$showCopied)
                         }
                         .onDelete(perform: self.deleteOTPRow)
+                        .onMove(perform: move)
                     }
                     .onReceive(timer) { result in
                         withAnimation {
@@ -82,26 +85,21 @@ struct MainView: View {
                 }
             }
             .overlay(
-                ZStack {
-                    Rectangle()
-                        .frame(width: 150, height: 150)
-                        .foregroundColor(.gray)
-                        .cornerRadius(20)
-                        .opacity(0.8)
-                    VStack {
-                        Image(systemName: "checkmark")
-                            .font(.largeTitle)
-                        Text("Copied")
-                    }
-                    .zIndex(1)
-                }
-                .padding(.bottom, 150)
-                .opacity(self.showCopied ? 1 : 0)
+                CopiedPopupView()
+                    .padding(.bottom, 150)
+                    .opacity(self.showCopied ? 1 : 0)
             )
             .navigationTitle("Simple OTP")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    if model.otps.count > 0 {
+                    if self.currentEditMode == .active {
+                        Button(action: {
+                            self.currentEditMode = .inactive
+                            self.model.saveAllOTPs()
+                        }) {
+                            Text("Done")
+                        }
+                    } else if model.otps.count > 0 {
                         Menu {
                             Button(action: {
                                 self.isQRScan = true
@@ -118,20 +116,38 @@ struct MainView: View {
                             }
                         } label: {
                             Image(systemName: "plus")
-                                .font(.system(.title))
+                                .font(.system(.title2))
                         }
                     }
                 }
 
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button(action: {
-                        self.showSettings = true
-                    }) {
-                        Image(systemName: "gear")
+                    if self.currentEditMode != .active {
+                        Menu {
+                            Button(action: {
+                                self.showSettings = true
+                            }) {
+                                Text("Settings")
+                            }
+
+                            Button(action: {
+                                self.currentEditMode = .active
+                            }) {
+                                Text("Edit")
+                            }
+                        } label: {
+                            Image(systemName: "gear")
+                                .font(.system(.title2))
+                        }
                     }
                 }
             }
+            .environment(\.editMode, self.$currentEditMode)
         }
+    }
+
+    private func move(from source: IndexSet, to destination: Int) {
+        self.model.otps.move(fromOffsets: source, toOffset: destination)
     }
 
     private func deleteOTPRow(indexSet: IndexSet) {

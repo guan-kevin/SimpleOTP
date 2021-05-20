@@ -24,7 +24,6 @@ struct TimerView: View {
                     .stroke(style: StrokeStyle(lineWidth: 5, lineCap: .round, lineJoin: .round))
                     .foregroundColor(current > 7 ? Color.blue : Color.red)
                     .rotationEffect(Angle(degrees: -90))
-                    .animation(.linear)
                 Text(String(current))
                     .font(.system(size: 18, design: .monospaced))
                     .lineLimit(1)
