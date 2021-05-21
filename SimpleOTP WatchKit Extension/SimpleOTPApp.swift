@@ -9,10 +9,14 @@ import SwiftUI
 
 @main
 struct SimpleOTPApp: App {
+    
+    @ObservedObject var model = MainViewModel()
+    
     var body: some Scene {
         WindowGroup {
             NavigationView {
                 ContentView()
+                    .environmentObject(model)
             }
         }
     }

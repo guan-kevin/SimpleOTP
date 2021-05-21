@@ -15,11 +15,16 @@ final class MainViewModel: ObservableObject {
     var valet: Valet?
     @Published var otps: [OTP] = []
 
+    var provider: WatchConnectivityProvoder!
+
     init() {
         print("INIT")
         valet = Valet.valet(with: Identifier(nonEmpty: "com.kevinguan.simpleOTP")!, accessibility: .whenUnlocked)
 //        try! valet?.removeAllObjects()
         list()
+
+        provider = WatchConnectivityProvoder()
+        provider.startSession()
     }
 
     func list() {
@@ -40,6 +45,10 @@ final class MainViewModel: ObservableObject {
             do {
                 if let data = EncryptionHelper.encodeData(otps) {
                     try valet?.setObject(data, forKey: "otps")
+
+                    if UserDefaults.standard.bool(forKey: "enableWatchApp") {
+                        provider.updateWatchInfo(otps: otps)
+                    }
                 }
             } catch {
                 print(error.localizedDescription)
@@ -53,7 +62,7 @@ final class MainViewModel: ObservableObject {
 
     func unlockApp() {
         guard isLocked, UserDefaults.standard.bool(forKey: "enableBiometrics") else { return }
-        
+
         let laContext = LAContext()
         let reason = "Unlock SimpleOTP"
         laContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { success, error in

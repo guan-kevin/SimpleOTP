@@ -26,7 +26,9 @@ struct SettingsView: View {
                 }
 
                 Section {
-                    Text("Backup All Data")
+                    NavigationLink(destination: BackupDataView()) {
+                        Text("Backup/Import All Data")
+                    }
                     NavigationLink(destination: DeleteAllOTPView()) {
                         Text("Delete All Data")
                     }

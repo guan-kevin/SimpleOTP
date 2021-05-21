@@ -8,14 +8,21 @@
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
-        Text("Hello, World!")
-            .padding()
-    }
-}
+    @EnvironmentObject var model: MainViewModel
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
+    var body: some View {
+        VStack {
+            Button(action: {
+                print(self.model.provider.session?.isReachable)
+            }) {
+                Text("TEST")
+            }
+            
+            Button(action: {
+                self.model.provider.fetch()
+            }) {
+                Text("TEST2")
+            }
+        }
     }
 }

@@ -26,6 +26,7 @@ class EncryptionHelper {
                 return result
             }
         } catch {
+            print(error)
             print(error.localizedDescription)
         }
 

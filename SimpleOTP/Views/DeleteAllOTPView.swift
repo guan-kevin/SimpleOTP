@@ -42,6 +42,10 @@ struct DeleteAllOTPView: View {
                     do {
                         try valet.removeObject(forKey: "otps")
                         self.model.otps = []
+
+                        if UserDefaults.standard.bool(forKey: "enableWatchApp") {
+                            self.model.provider.updateWatchInfo(otps: [])
+                        }
                     } catch {
                         print("Error")
                     }
