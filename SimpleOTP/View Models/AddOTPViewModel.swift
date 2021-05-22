@@ -130,78 +130,77 @@ final class AddOTPViewModel: ObservableObject {
         showScanner = false
         
         resetFields()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            switch result {
+            case .success(let code):
+                if let url = URL(string: code) {
+                    if url.isValidScheme() {
+                        let labels = url.getOTPLabel()
+                        let type: OTPType = url.getOTPType()
 
-        switch result {
-        case .success(let code):
-            if let url = URL(string: code) {
-                if url.isValidScheme() {
-                    let labels = url.getOTPLabel()
-                    let type: OTPType = url.getOTPType()
-
-                    switch type {
-                    case .totp:
-                        self.type = 0
-                    case .hotp:
-                        self.type = 1
-                    default:
-                        alertMessage = "This OTP Type is invalid"
-                        showAlert = true
-                        resetFields()
+                        switch type {
+                        case .totp:
+                            self.type = 0
+                        case .hotp:
+                            self.type = 1
+                        default:
+                            self.alertMessage = "This OTP Type is invalid"
+                            self.showAlert = true
+                            self.resetFields()
+                            return
+                        }
+                        
+                        if labels.count == 0 {
+                            self.alertMessage = "This QR code doesn't contain label"
+                            self.showAlert = true
+                            self.resetFields()
+                            return
+                        } else if labels.count == 1 {
+                            self.accountname = labels.first!
+                        } else {
+                            self.issuer = labels[0]
+                            self.accountname = labels[1]
+                        }
+                        
+                        self.secret = url.getQuery("secret") ?? ""
+                        
+                        if self.issuer == "" {
+                            self.issuer = url.getQuery("issuer") ?? ""
+                        }
+                        
+                        switch url.getQuery("algorithm")?.lowercased() {
+                        case "sha1":
+                            self.algorithm = 0
+                        case "sha256":
+                            self.algorithm = 1
+                        case "sha512":
+                            self.algorithm = 2
+                        default:
+                            self.algorithm = 0
+                        }
+                        
+                        self.digits = url.getQuery("digits") ?? "6"
+                        
+                        if let url_counter = url.getQuery("counter") {
+                            self.counter = url_counter
+                        }
+                        
+                        if let url_period = url.getQuery("period") {
+                            self.period = url_period
+                        }
+                        
                         return
                     }
-                    
-                    if labels.count == 0 {
-                        alertMessage = "This QR code doesn't contain label"
-                        showAlert = true
-                        resetFields()
-                        return
-                    } else if labels.count == 1 {
-                        accountname = labels.first!
-                    } else {
-                        issuer = labels[0]
-                        accountname = labels[1]
-                    }
-                    
-                    secret = url.getQuery("secret") ?? ""
-                    
-                    if issuer == "" {
-                        issuer = url.getQuery("issuer") ?? ""
-                    }
-                    
-                    switch url.getQuery("algorithm")?.lowercased() {
-                    case "sha1":
-                        algorithm = 0
-                    case "sha256":
-                        algorithm = 1
-                    case "sha512":
-                        algorithm = 2
-                    default:
-                        alertMessage = "This OTP algorithm is invalid"
-                        showAlert = true
-                        resetFields()
-                        return
-                    }
-                    
-                    digits = url.getQuery("digits") ?? "6"
-                    
-                    if let url_counter = url.getQuery("counter") {
-                        counter = url_counter
-                    }
-                    
-                    if let url_period = url.getQuery("period") {
-                        period = url_period
-                    }
-                    
-                    return
                 }
+                
+                self.alertMessage = "This QR code is invalid"
+                self.showAlert = true
+                self.resetFields()
+            case .failure:
+                self.alertMessage = "Unable to scan QR code"
+                self.showAlert = true
             }
-            
-            alertMessage = "This QR code is invalid"
-            showAlert = true
-            resetFields()
-        case .failure:
-            alertMessage = "Unable to scan QR code"
-            showAlert = true
         }
     }
     
