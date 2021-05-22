@@ -21,11 +21,6 @@ final class WatchConnectivityProvoder: NSObject, WCSessionDelegate {
             session!.activate()
         }
     }
-    
-    func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
-        print("didReceiveApplicationContext")
-        print(applicationContext)
-    }
 
     func updateWatchInfo(otps: [OTP]) {
         guard session != nil, session?.activationState == .activated else {
@@ -50,14 +45,14 @@ final class WatchConnectivityProvoder: NSObject, WCSessionDelegate {
             print(error)
         }
     }
-    
+
     func disableWatchApp() {
         guard session != nil, session?.activationState == .activated else {
             print("Session is NULL")
             startSession()
             return
         }
-        
+
         do {
             try session!.updateApplicationContext(["enableWatchApp": false, "otps": []])
             print("Sent without Error!")
@@ -70,6 +65,46 @@ final class WatchConnectivityProvoder: NSObject, WCSessionDelegate {
         if activationState == .activated {
             print("activationDidCompleteWith")
         }
+    }
+
+    func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String: Any]) {
+        print("didReceiveApplicationContext")
+        let valet = Valet.valet(with: Identifier(nonEmpty: "com.kevinguan.simpleOTP")!, accessibility: .whenUnlocked)
+
+        do {
+            if let otps = applicationContext["otps"] as? String {
+                if let password = try? valet.string(forKey: "password") {
+                    if let result = EncryptionHelper.decryptData(data: otps, key: password) {
+                        // Dont override if current counter is older
+
+                        var iPhone_otps: [OTP] = []
+                        if let data = try? valet.object(forKey: "otps") {
+                            iPhone_otps = EncryptionHelper.decodeData(data: data, as: [OTP].self) ?? []
+                        }
+
+                        let watch_hotps = result.filter { $0.type == .hotp } // get all hotps from watch
+
+                        for watch_hotp in watch_hotps {
+                            for i in 0 ..< iPhone_otps.count {
+                                if watch_hotp.id == iPhone_otps[i].id && watch_hotp.counter > iPhone_otps[i].counter {
+                                    // watch has newer HOTP
+                                    iPhone_otps[i].counter = watch_hotp.counter
+                                }
+                            }
+                        }
+
+                        if let data = EncryptionHelper.encodeData(iPhone_otps) {
+                            try valet.setObject(data, forKey: "otps")
+
+                            DispatchQueue.main.async {
+                                NotificationCenter.default.post(name: Notification.Name("WatchAppSyncing"), object: nil, userInfo: ["otps": iPhone_otps])
+                            }
+                            return
+                        }
+                    }
+                }
+            }
+        } catch {}
     }
 
     func sessionDidBecomeInactive(_ session: WCSession) {

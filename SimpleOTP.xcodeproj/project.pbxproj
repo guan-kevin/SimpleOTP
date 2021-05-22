@@ -18,6 +18,9 @@
 		0A205F572658D603007EC8F0 /* EncryptionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A205F562658D603007EC8F0 /* EncryptionHelper.swift */; };
 		0A205F592658D748007EC8F0 /* SetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A205F582658D748007EC8F0 /* SetPasswordView.swift */; };
 		0A205F5C2658DD5F007EC8F0 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A205F5B2658DD5F007EC8F0 /* MainView.swift */; };
+		0A205F5E26599096007EC8F0 /* OTPRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A205F5D26599096007EC8F0 /* OTPRowView.swift */; };
+		0A205F60265990BF007EC8F0 /* OTPGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A205F5F265990BF007EC8F0 /* OTPGenerator.swift */; };
+		0A205F62265991A6007EC8F0 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A205F61265991A6007EC8F0 /* TimerView.swift */; };
 		0A5D79D42652289B001E5946 /* SimpleOTPApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5D79D32652289B001E5946 /* SimpleOTPApp.swift */; };
 		0A5D79D62652289B001E5946 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5D79D52652289B001E5946 /* ContentView.swift */; };
 		0A5D79D82652289E001E5946 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A5D79D72652289E001E5946 /* Assets.xcassets */; };
@@ -104,6 +107,9 @@
 		0A205F562658D603007EC8F0 /* EncryptionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncryptionHelper.swift; sourceTree = "<group>"; };
 		0A205F582658D748007EC8F0 /* SetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetPasswordView.swift; sourceTree = "<group>"; };
 		0A205F5B2658DD5F007EC8F0 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		0A205F5D26599096007EC8F0 /* OTPRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPRowView.swift; sourceTree = "<group>"; };
+		0A205F5F265990BF007EC8F0 /* OTPGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPGenerator.swift; sourceTree = "<group>"; };
+		0A205F61265991A6007EC8F0 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		0A5D79D02652289B001E5946 /* SimpleOTP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleOTP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A5D79D32652289B001E5946 /* SimpleOTPApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleOTPApp.swift; sourceTree = "<group>"; };
 		0A5D79D52652289B001E5946 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -209,6 +215,8 @@
 				0A5D79F02652289F001E5946 /* ContentView.swift */,
 				0A205F582658D748007EC8F0 /* SetPasswordView.swift */,
 				0A205F5B2658DD5F007EC8F0 /* MainView.swift */,
+				0A205F5D26599096007EC8F0 /* OTPRowView.swift */,
+				0A205F61265991A6007EC8F0 /* TimerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -275,6 +283,7 @@
 				0A5D79F22652289F001E5946 /* SimpleOTPApp.swift */,
 				0A5D79F42652289F001E5946 /* ComplicationController.swift */,
 				0A205F562658D603007EC8F0 /* EncryptionHelper.swift */,
+				0A205F5F265990BF007EC8F0 /* OTPGenerator.swift */,
 				0A205F552658D5B2007EC8F0 /* Models */,
 				0A205F5A2658D74C007EC8F0 /* Views */,
 				0AE9D468265778520051691A /* View Models */,
@@ -631,11 +640,14 @@
 				0A5D79F12652289F001E5946 /* ContentView.swift in Sources */,
 				0A205F5C2658DD5F007EC8F0 /* MainView.swift in Sources */,
 				0A205F542658D592007EC8F0 /* OTPType.swift in Sources */,
+				0A205F62265991A6007EC8F0 /* TimerView.swift in Sources */,
 				0AE9D465265777E70051691A /* WatchConnectivityProvoder.swift in Sources */,
+				0A205F5E26599096007EC8F0 /* OTPRowView.swift in Sources */,
 				0A205F572658D603007EC8F0 /* EncryptionHelper.swift in Sources */,
 				0A205F522658D575007EC8F0 /* OTP.swift in Sources */,
 				0A5D79F32652289F001E5946 /* SimpleOTPApp.swift in Sources */,
 				0A5D79F52652289F001E5946 /* ComplicationController.swift in Sources */,
+				0A205F60265990BF007EC8F0 /* OTPGenerator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

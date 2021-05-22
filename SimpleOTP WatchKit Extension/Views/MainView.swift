@@ -9,16 +9,28 @@ import SwiftUI
 
 struct MainView: View {
     @EnvironmentObject var model: MainViewModel
+    @State var date = Date()
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     var body: some View {
         Group {
             if model.otps.count > 0 {
                 List {
                     ForEach(model.otps) { otp in
-                        Text(otp.accountname)
+                        OTPRowView(otp: otp, date: $date)
+                    }
+                }
+                .listStyle(CarouselListStyle())
+                .onReceive(timer) { result in
+                    withAnimation {
+                        date = result
                     }
                 }
             } else {
-                Text("No OTP Yet!")
+                VStack {
+                    Text("No OTP Yet!")
+                    Text("You can add one from the iPhone app")
+                        .multilineTextAlignment(.center)
+                }
             }
         }
     }

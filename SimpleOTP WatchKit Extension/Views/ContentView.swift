@@ -16,9 +16,7 @@ struct ContentView: View {
     var body: some View {
         MainView()
             .onReceive(pub) { notification in
-                print(notification)
                 if let result = notification.userInfo {
-                    print("has userInfo")
                     if let type = result["type"] as? Int {
                         print(type)
                         // 0: Disable, 1: Enable with Password, 2: Enabled

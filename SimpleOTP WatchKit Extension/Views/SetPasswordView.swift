@@ -18,6 +18,7 @@ struct SetPasswordView: View {
         ScrollView {
             VStack(alignment: .leading) {
                 Text("To decrypt your OTP data, you need to enter the password you set on your iPhone first")
+                    .fixedSize(horizontal: false, vertical: true)
                     .font(.headline)
 
                 SecureField("Password", text: $password)
