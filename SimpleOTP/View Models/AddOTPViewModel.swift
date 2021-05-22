@@ -30,6 +30,8 @@ final class AddOTPViewModel: ObservableObject {
             return nil
         }
         
+        secret = secret.replacingOccurrences(of: " ", with: "")
+        
         if accountname == "" {
             alertMessage = "Please enter your account name!"
             showAlert = true
@@ -163,7 +165,7 @@ final class AddOTPViewModel: ObservableObject {
                             self.accountname = labels[1]
                         }
                         
-                        self.secret = url.getQuery("secret") ?? ""
+                        self.secret = url.getQuery("secret")?.replacingOccurrences(of: " ", with: "") ?? ""
                         
                         if self.issuer == "" {
                             self.issuer = url.getQuery("issuer") ?? ""

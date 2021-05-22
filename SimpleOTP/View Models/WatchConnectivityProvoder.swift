@@ -21,6 +21,11 @@ final class WatchConnectivityProvoder: NSObject, WCSessionDelegate {
             session!.activate()
         }
     }
+    
+    func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
+        print("didReceiveApplicationContext")
+        print(applicationContext)
+    }
 
     func updateWatchInfo(otps: [OTP]) {
         guard session != nil, session?.activationState == .activated else {
@@ -39,7 +44,22 @@ final class WatchConnectivityProvoder: NSObject, WCSessionDelegate {
         guard result != nil else { return }
 
         do {
-            try session!.updateApplicationContext(["enableWatchApp": UserDefaults.standard.bool(forKey: "enableWatchApp"), "otps": result!])
+            try session!.updateApplicationContext(["enableWatchApp": true, "otps": result!])
+            print("Sent without Error!")
+        } catch {
+            print(error)
+        }
+    }
+    
+    func disableWatchApp() {
+        guard session != nil, session?.activationState == .activated else {
+            print("Session is NULL")
+            startSession()
+            return
+        }
+        
+        do {
+            try session!.updateApplicationContext(["enableWatchApp": false, "otps": []])
             print("Sent without Error!")
         } catch {
             print(error)

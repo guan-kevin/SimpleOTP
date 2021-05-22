@@ -21,7 +21,7 @@ struct EnableWatchAppView: View {
                     if settingsModel.enableWatchApp {
                         Button(action: {
                             if self.settingsModel.disableWatchApp() {
-                                self.model.provider.updateWatchInfo(otps: model.otps)
+                                self.model.provider.disableWatchApp()
                             }
                         }) {
                             Text("Disable Watch App")
@@ -55,12 +55,10 @@ struct EnableWatchAppView: View {
                     }
                 }
 
-                if self.settingsModel.enableWatchApp {
-                    Button(action: {
-                        print(self.model.provider.session?.isReachable)
-                    }) {
-                        Text("TEST")
-                    }
+                Button(action: {
+                    print(self.model.provider.session?.isReachable)
+                }) {
+                    Text("TEST")
                 }
             }
             .alert(isPresented: $settingsModel.showAlert) {
