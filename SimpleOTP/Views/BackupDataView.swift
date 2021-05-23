@@ -15,6 +15,7 @@ struct BackupDataView: View {
     @State private var showImporter = false
 
     @State var passwordText = ""
+    @State var passwordConfirmText = ""
     @State var backupBase64 = ""
     @State var showAlert = false
     @State var alertMessage = ""
@@ -22,11 +23,20 @@ struct BackupDataView: View {
     var body: some View {
         Group {
             Form {
-                Section(header: Text("Please set a password with more than 5 characters first."), footer: Text("Import backup data will override your current data!")) {
-                    SecureField("Password", text: $passwordText)
+                Section(header: Text("Please set a password with more than 5 characters first.")) {
+                    SecureField("Enter Password", text: $passwordText)
+                    SecureField("Confirm Password", text: $passwordConfirmText)
+                }
 
+                Section(footer: Text("Import backup data will override your current data!")) {
                     if model.otps.count > 0 {
                         Button(action: {
+                            if passwordText != passwordConfirmText {
+                                self.alertMessage = "Password doesn't match!"
+                                self.showAlert = true
+                                return
+                            }
+
                             let result = EncryptionHelper.encryptData(otps: self.model.otps, key: passwordText)
 
                             if result != nil {
@@ -40,6 +50,12 @@ struct BackupDataView: View {
                     }
 
                     Button(action: {
+                        if passwordText != passwordConfirmText {
+                            self.alertMessage = "Password doesn't match!"
+                            self.showAlert = true
+                            return
+                        }
+
                         self.showImporter = true
                     }) {
                         Text("Import my backup data")
@@ -52,6 +68,7 @@ struct BackupDataView: View {
                 case .success:
                     self.backupBase64 = ""
                     self.passwordText = ""
+                    self.passwordConfirmText = ""
 
                     self.alertMessage = "Done!"
                     self.showAlert = true
@@ -68,6 +85,7 @@ struct BackupDataView: View {
                         let otps = EncryptionHelper.decryptData(data: base64, key: passwordText)
                         if otps != nil {
                             self.passwordText = ""
+                            self.passwordConfirmText = ""
                             self.model.otps = otps!
                             self.model.saveAllOTPs()
                             self.alertMessage = "Done!"

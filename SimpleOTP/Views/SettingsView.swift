@@ -23,22 +23,28 @@ struct SettingsView: View {
                     NavigationLink(destination: EnableWatchAppView(settingsModel: settingsModel)) {
                         Text("Enable Watch App")
                     }
+                    .id(tempWorkaroundUUID)
                 }
 
                 Section {
                     NavigationLink(destination: BackupDataView()) {
                         Text("Backup/Import All Data")
                     }
+                    .id(tempWorkaroundUUID)
                     NavigationLink(destination: DeleteAllOTPView()) {
                         Text("Delete All Data")
                     }
+                    .id(tempWorkaroundUUID)
                     .disabled(self.model.otps.count == 0)
-                    Text("Info")
+                    
+                    NavigationLink(destination: InfoView()) {
+                        Text("Acknowledgements")
+                    }
+                    .id(tempWorkaroundUUID)
                 }
             }
         }
         .navigationBarTitle("Settings", displayMode: .inline)
-        .id(tempWorkaroundUUID)
         .onDisappear {
             tempWorkaroundUUID = UUID() // otherwise form won't deselect
         }

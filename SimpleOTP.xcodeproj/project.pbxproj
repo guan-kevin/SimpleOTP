@@ -21,6 +21,7 @@
 		0A205F5E26599096007EC8F0 /* OTPRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A205F5D26599096007EC8F0 /* OTPRowView.swift */; };
 		0A205F60265990BF007EC8F0 /* OTPGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A205F5F265990BF007EC8F0 /* OTPGenerator.swift */; };
 		0A205F62265991A6007EC8F0 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A205F61265991A6007EC8F0 /* TimerView.swift */; };
+		0A205F64265A1FCA007EC8F0 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A205F63265A1FC9007EC8F0 /* InfoView.swift */; };
 		0A5D79D42652289B001E5946 /* SimpleOTPApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5D79D32652289B001E5946 /* SimpleOTPApp.swift */; };
 		0A5D79D62652289B001E5946 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5D79D52652289B001E5946 /* ContentView.swift */; };
 		0A5D79D82652289E001E5946 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A5D79D72652289E001E5946 /* Assets.xcassets */; };
@@ -110,6 +111,7 @@
 		0A205F5D26599096007EC8F0 /* OTPRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPRowView.swift; sourceTree = "<group>"; };
 		0A205F5F265990BF007EC8F0 /* OTPGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPGenerator.swift; sourceTree = "<group>"; };
 		0A205F61265991A6007EC8F0 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		0A205F63265A1FC9007EC8F0 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		0A5D79D02652289B001E5946 /* SimpleOTP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleOTP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A5D79D32652289B001E5946 /* SimpleOTPApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleOTPApp.swift; sourceTree = "<group>"; };
 		0A5D79D52652289B001E5946 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -325,6 +327,7 @@
 				0A158074265638D500E2B35B /* CopiedPopupView.swift */,
 				0A15807626563A1F00E2B35B /* EnableWatchAppView.swift */,
 				0AE9D4692657814C0051691A /* BackupDataView.swift */,
+				0A205F63265A1FC9007EC8F0 /* InfoView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -619,6 +622,7 @@
 				0A5D7A1026522915001E5946 /* LockView.swift in Sources */,
 				0A854ED32654CA8A00D0AAFB /* AddOTPViewModel.swift in Sources */,
 				0A99879B26538F9700723132 /* TimerView.swift in Sources */,
+				0A205F64265A1FCA007EC8F0 /* InfoView.swift in Sources */,
 				0A0D4A9526522B2C00A1B2CA /* URL+Extension.swift in Sources */,
 				0A9975CE26549B8000E6AABF /* EncryptionHelper.swift in Sources */,
 				0A17FC8C2657736D00CA505C /* WatchConnectivityProvoder.swift in Sources */,
