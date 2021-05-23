@@ -50,6 +50,8 @@
 		0AE9D465265777E70051691A /* WatchConnectivityProvoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE9D464265777E70051691A /* WatchConnectivityProvoder.swift */; };
 		0AE9D467265778210051691A /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE9D466265778210051691A /* MainViewModel.swift */; };
 		0AE9D46A2657814C0051691A /* BackupDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE9D4692657814C0051691A /* BackupDataView.swift */; };
+		0AFB7289265AE19100B5B5B2 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFB7288265AE19100B5B5B2 /* SearchBarView.swift */; };
+		0AFB728B265AE86E00B5B5B2 /* SearchingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFB728A265AE86D00B5B5B2 /* SearchingView.swift */; };
 		4B242008ACE6367CB67F0E5D /* Pods_SimpleOTP_WatchKit_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D24AA5D7A9FCACAE4317B25 /* Pods_SimpleOTP_WatchKit_Extension.framework */; };
 		8C7BAF292BAB2C0B55C5962C /* Pods_SimpleOTP_WatchKit_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B33C8FCA7256873AB56F8834 /* Pods_SimpleOTP_WatchKit_App.framework */; };
 		F7AEAF4FA6166841EFD48CE5 /* Pods_SimpleOTP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77ACF5A49E3F6B84F62C32C1 /* Pods_SimpleOTP.framework */; };
@@ -144,6 +146,8 @@
 		0AE9D464265777E70051691A /* WatchConnectivityProvoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectivityProvoder.swift; sourceTree = "<group>"; };
 		0AE9D466265778210051691A /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		0AE9D4692657814C0051691A /* BackupDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupDataView.swift; sourceTree = "<group>"; };
+		0AFB7288265AE19100B5B5B2 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
+		0AFB728A265AE86D00B5B5B2 /* SearchingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchingView.swift; sourceTree = "<group>"; };
 		1D24AA5D7A9FCACAE4317B25 /* Pods_SimpleOTP_WatchKit_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SimpleOTP_WatchKit_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2364FFBA5DBBB8D86C93C5E7 /* Pods-SimpleOTP WatchKit Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleOTP WatchKit Extension.debug.xcconfig"; path = "Target Support Files/Pods-SimpleOTP WatchKit Extension/Pods-SimpleOTP WatchKit Extension.debug.xcconfig"; sourceTree = "<group>"; };
 		553A8CEA29CA5F3CAF2B2EF5 /* Pods-SimpleOTP WatchKit App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleOTP WatchKit App.release.xcconfig"; path = "Target Support Files/Pods-SimpleOTP WatchKit App/Pods-SimpleOTP WatchKit App.release.xcconfig"; sourceTree = "<group>"; };
@@ -328,6 +332,8 @@
 				0A15807626563A1F00E2B35B /* EnableWatchAppView.swift */,
 				0AE9D4692657814C0051691A /* BackupDataView.swift */,
 				0A205F63265A1FC9007EC8F0 /* InfoView.swift */,
+				0AFB728A265AE86D00B5B5B2 /* SearchingView.swift */,
+				0AFB7288265AE19100B5B5B2 /* SearchBarView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -616,12 +622,14 @@
 				0A5D7A0A265228CC001E5946 /* OTP.swift in Sources */,
 				0A5D7A1226522921001E5946 /* MainView.swift in Sources */,
 				0A854ED52654D27C00D0AAFB /* OTPGenerator.swift in Sources */,
+				0AFB7289265AE19100B5B5B2 /* SearchBarView.swift in Sources */,
 				0A5D7A0C265228E3001E5946 /* OTPType.swift in Sources */,
 				0A5D79D62652289B001E5946 /* ContentView.swift in Sources */,
 				0A854EDB2654E18A00D0AAFB /* SettingsViewModel.swift in Sources */,
 				0A5D7A1026522915001E5946 /* LockView.swift in Sources */,
 				0A854ED32654CA8A00D0AAFB /* AddOTPViewModel.swift in Sources */,
 				0A99879B26538F9700723132 /* TimerView.swift in Sources */,
+				0AFB728B265AE86E00B5B5B2 /* SearchingView.swift in Sources */,
 				0A205F64265A1FCA007EC8F0 /* InfoView.swift in Sources */,
 				0A0D4A9526522B2C00A1B2CA /* URL+Extension.swift in Sources */,
 				0A9975CE26549B8000E6AABF /* EncryptionHelper.swift in Sources */,

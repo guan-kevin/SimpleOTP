@@ -22,6 +22,8 @@ struct MainView: View {
 
     @State var currentEditMode: EditMode = .inactive
 
+    @State var showSearchSheet = false
+
     @State var date = Date()
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
@@ -65,6 +67,7 @@ struct MainView: View {
                         .onDelete(perform: self.deleteOTPRow)
                         .onMove(perform: move)
                     }
+                    .listStyle(InsetGroupedListStyle())
                     .onReceive(timer) { result in
                         withAnimation {
                             date = result
@@ -91,7 +94,7 @@ struct MainView: View {
             )
             .navigationTitle("Simple OTP")
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItemGroup(placement: .navigationBarTrailing) {
                     if self.currentEditMode == .active {
                         Button(action: {
                             self.currentEditMode = .inactive
@@ -100,6 +103,13 @@ struct MainView: View {
                             Text("Done")
                         }
                     } else if model.otps.count > 0 {
+                        Button(action: {
+                            self.showSearchSheet = true
+                        }) {
+                            Image(systemName: "magnifyingglass")
+                                .font(.system(.title2))
+                        }
+
                         Menu {
                             Button(action: {
                                 self.isQRScan = true
@@ -143,6 +153,10 @@ struct MainView: View {
                 }
             }
             .environment(\.editMode, self.$currentEditMode)
+        }
+        .sheet(isPresented: $showSearchSheet) {
+            SearchingView(date: self.$date)
+                .environmentObject(self.model)
         }
     }
 
