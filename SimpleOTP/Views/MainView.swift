@@ -13,6 +13,7 @@ struct MainView: View {
     @State var showSettings = false
     @State var showAddOTP = false
     @State var isQRScan = false
+
     @State var showAddSheet = false
 
     @State var showDeleteConfirmation = false
