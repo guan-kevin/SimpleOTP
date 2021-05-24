@@ -14,10 +14,6 @@ final class SettingsViewModel: ObservableObject {
     @Published var showAlert = false
     @Published var alertMessage = ""
 
-    init() {
-        print("SettingsViewModel")
-    }
-
     func getBiometricType() -> String? {
         let laContext = LAContext()
 

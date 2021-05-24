@@ -27,7 +27,7 @@ struct SimpleOTPApp: App {
                     case .inactive:
                         break
                     @unknown default:
-                        print("default state")
+                        break
                     }
                 })
                 .onAppear {

@@ -75,7 +75,7 @@ final class MainViewModel: ObservableObject {
                     DispatchQueue.main.async {
                         print(error.localizedDescription)
 
-                        if error.code == .biometryLockout {
+                        if error.code == .biometryLockout || error.code == .biometryNotEnrolled || error.code == .biometryNotAvailable {
                             // try again without biometrics
 
                             laContext.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: reason) { success, _ in

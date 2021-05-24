@@ -42,7 +42,7 @@ final class WatchConnectivityProvoder: NSObject, WCSessionDelegate {
             try session!.updateApplicationContext(["enableWatchApp": true, "otps": result!])
             print("Sent without Error!")
         } catch {
-            print(error)
+            print(error.localizedDescription)
         }
     }
 
@@ -57,7 +57,7 @@ final class WatchConnectivityProvoder: NSObject, WCSessionDelegate {
             try session!.updateApplicationContext(["enableWatchApp": false, "otps": []])
             print("Sent without Error!")
         } catch {
-            print(error)
+            print(error.localizedDescription)
         }
     }
 

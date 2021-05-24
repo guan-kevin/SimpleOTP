@@ -20,11 +20,9 @@ struct ContentView: View {
             }
         }
         .onReceive(pub) { notification in
-            print("Update")
             if let result = notification.userInfo {
                 if let new = result["otps"] as? [OTP] {
                     self.model.otps = new
-                    print("Success")
                 }
             }
         }

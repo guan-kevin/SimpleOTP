@@ -47,7 +47,7 @@ struct DeleteAllOTPView: View {
                             self.model.provider.updateWatchInfo(otps: [])
                         }
                     } catch {
-                        print("Error")
+                        print(error.localizedDescription)
                     }
                 }
             }

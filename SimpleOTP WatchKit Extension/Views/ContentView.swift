@@ -18,7 +18,6 @@ struct ContentView: View {
             .onReceive(pub) { notification in
                 if let result = notification.userInfo {
                     if let type = result["type"] as? Int {
-                        print(type)
                         // 0: Disable, 1: Enable with Password, 2: Enabled
                         if type == 0 {
                             self.model.otps = []

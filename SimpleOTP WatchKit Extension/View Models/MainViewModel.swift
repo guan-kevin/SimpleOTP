@@ -15,17 +15,11 @@ final class MainViewModel: ObservableObject {
     var provider: WatchConnectivityProvoder!
 
     init() {
-        print("INIT")
         valet = Valet.valet(with: Identifier(nonEmpty: "com.kevinguan.simpleOTP")!, accessibility: .whenUnlocked)
-//        try! valet?.removeAllObjects()
         list()
 
         provider = WatchConnectivityProvoder()
         provider.startSession()
-        
-//        self.otps = [OTP(type: .hotp, issuer: "Github", accountname: "guan-kevin", secret: "rpvswiwjfej2wvi5nu462ffuc4tgdrefhdy7uilhapm4sivoyiprby35", digits: 6, encryptions: .sha1, period: 0, counter: 0), OTP(type: .totp, issuer: "SimpleOTP", accountname: "support@pigzy.net", secret: "rpvswiwjfej2wvi5nu462ffuc4tgdrefhdy7uilhapm4sivoyiprby35", digits: 6, encryptions: .sha1, period: 30, counter: 0)]
-//        self.saveAllOTPs()
-//        list()
     }
 
     func list() {

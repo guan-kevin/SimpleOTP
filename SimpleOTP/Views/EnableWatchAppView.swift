@@ -41,8 +41,6 @@ struct EnableWatchAppView: View {
 
                             Button(action: {
                                 if self.settingsModel.enableWatchApp(password: passwordText) {
-                                    print("YES")
-
                                     self.showEnableView = false
 
                                     self.model.provider.updateWatchInfo(otps: model.otps)
@@ -53,12 +51,6 @@ struct EnableWatchAppView: View {
                             .disabled(passwordText.count <= 5)
                         }
                     }
-                }
-
-                Button(action: {
-                    print(self.model.provider.session?.isReachable)
-                }) {
-                    Text("TEST")
                 }
             }
             .alert(isPresented: $settingsModel.showAlert) {

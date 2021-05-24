@@ -41,7 +41,7 @@ final class WatchConnectivityProvoder: NSObject, WCSessionDelegate {
             try session!.updateApplicationContext(["otps": result!])
             print("Sent without Error!")
         } catch {
-            print(error)
+            print(error.localizedDescription)
         }
     }
 
@@ -49,7 +49,7 @@ final class WatchConnectivityProvoder: NSObject, WCSessionDelegate {
         if activationState == .activated {
             print("activationDidCompleteWith")
         } else {
-            print(error)
+            print(error?.localizedDescription)
         }
     }
 
@@ -89,9 +89,8 @@ final class WatchConnectivityProvoder: NSObject, WCSessionDelegate {
                                             save_otps.append(searchID.first!)
                                             continue
                                         }
-
                                     }
-                                    
+
                                     save_otps.append(iPhone_otp)
                                 }
 
