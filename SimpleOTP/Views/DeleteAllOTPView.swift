@@ -38,7 +38,7 @@ struct DeleteAllOTPView: View {
         laContext.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: reason) { success, _ in
             if success {
                 DispatchQueue.main.async {
-                    let valet = Valet.valet(with: Identifier(nonEmpty: "com.kevinguan.simpleOTP")!, accessibility: .whenUnlocked)
+                    let valet = UserDefaults.standard.bool(forKey: "useiCloud") ? Valet.iCloudValet(with: Identifier(nonEmpty: "com.kevinguan.simpleOTP")!, accessibility: .whenUnlocked) : Valet.valet(with: Identifier(nonEmpty: "com.kevinguan.simpleOTP")!, accessibility: .whenUnlocked)
                     do {
                         try valet.removeObject(forKey: "otps")
                         self.model.otps = []

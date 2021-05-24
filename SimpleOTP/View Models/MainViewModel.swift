@@ -19,12 +19,15 @@ final class MainViewModel: ObservableObject {
 
     init() {
         print("INIT")
-        valet = Valet.valet(with: Identifier(nonEmpty: "com.kevinguan.simpleOTP")!, accessibility: .whenUnlocked)
-//        try! valet?.removeAllObjects()
+        valet = UserDefaults.standard.bool(forKey: "useiCloud") ? Valet.iCloudValet(with: Identifier(nonEmpty: "com.kevinguan.simpleOTP")!, accessibility: .whenUnlocked) : Valet.valet(with: Identifier(nonEmpty: "com.kevinguan.simpleOTP")!, accessibility: .whenUnlocked)
         list()
 
         provider = WatchConnectivityProvoder()
         provider.startSession()
+    }
+
+    func updateValet() {
+        valet = UserDefaults.standard.bool(forKey: "useiCloud") ? Valet.iCloudValet(with: Identifier(nonEmpty: "com.kevinguan.simpleOTP")!, accessibility: .whenUnlocked) : Valet.valet(with: Identifier(nonEmpty: "com.kevinguan.simpleOTP")!, accessibility: .whenUnlocked)
     }
 
     func list() {

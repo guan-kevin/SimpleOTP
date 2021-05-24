@@ -29,7 +29,7 @@ final class WatchConnectivityProvoder: NSObject, WCSessionDelegate {
             return
         }
 
-        let valet = Valet.valet(with: Identifier(nonEmpty: "com.kevinguan.simpleOTP")!, accessibility: .whenUnlocked)
+        let valet = UserDefaults.standard.bool(forKey: "useiCloud") ? Valet.iCloudValet(with: Identifier(nonEmpty: "com.kevinguan.simpleOTP")!, accessibility: .whenUnlocked) : Valet.valet(with: Identifier(nonEmpty: "com.kevinguan.simpleOTP")!, accessibility: .whenUnlocked)
         let password = try? valet.string(forKey: "password")
 
         guard password != nil else { return }
@@ -69,7 +69,7 @@ final class WatchConnectivityProvoder: NSObject, WCSessionDelegate {
 
     func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String: Any]) {
         print("didReceiveApplicationContext")
-        let valet = Valet.valet(with: Identifier(nonEmpty: "com.kevinguan.simpleOTP")!, accessibility: .whenUnlocked)
+        let valet = UserDefaults.standard.bool(forKey: "useiCloud") ? Valet.iCloudValet(with: Identifier(nonEmpty: "com.kevinguan.simpleOTP")!, accessibility: .whenUnlocked) : Valet.valet(with: Identifier(nonEmpty: "com.kevinguan.simpleOTP")!, accessibility: .whenUnlocked)
 
         do {
             if let otps = applicationContext["otps"] as? String {
@@ -86,7 +86,7 @@ final class WatchConnectivityProvoder: NSObject, WCSessionDelegate {
 
                         for watch_hotp in watch_hotps {
                             for i in 0 ..< iPhone_otps.count {
-                                if watch_hotp.id == iPhone_otps[i].id && watch_hotp.counter > iPhone_otps[i].counter {
+                                if watch_hotp.id == iPhone_otps[i].id, watch_hotp.counter > iPhone_otps[i].counter {
                                     // watch has newer HOTP
                                     iPhone_otps[i].counter = watch_hotp.counter
                                 }

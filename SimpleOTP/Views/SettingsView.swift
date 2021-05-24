@@ -24,6 +24,11 @@ struct SettingsView: View {
                         Text("Enable Watch App")
                     }
                     .id(tempWorkaroundUUID)
+                    
+                    NavigationLink(destination: EnableiCloudView(settingsModel: settingsModel)) {
+                        Text("Enable iCloud")
+                    }
+                    .id(tempWorkaroundUUID)
                 }
 
                 Section {
