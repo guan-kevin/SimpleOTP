@@ -22,6 +22,8 @@ struct SimpleOTPApp: App {
                         if model.isAppLocked() {
                             model.unlockApp()
                         }
+                        
+                        self.model.list()
                     case .background:
                         model.isLocked = true
                     case .inactive:

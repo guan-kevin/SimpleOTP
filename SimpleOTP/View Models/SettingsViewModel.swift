@@ -35,7 +35,7 @@ final class SettingsViewModel: ObservableObject {
     }
 
     func checkIfiCloudEnable() {
-        self.enableiCloud = UserDefaults.standard.bool(forKey: "enableiCloud")
+        self.enableiCloud = UserDefaults.standard.bool(forKey: "useiCloud")
     }
 
     func enableWatchApp(password: String) -> Bool {
@@ -44,7 +44,7 @@ final class SettingsViewModel: ObservableObject {
             self.showAlert = true
             return false
         }
-        let valet = UserDefaults.standard.bool(forKey: "useiCloud") ? Valet.iCloudValet(with: Identifier(nonEmpty: "com.kevinguan.simpleOTP")!, accessibility: .whenUnlocked) : Valet.valet(with: Identifier(nonEmpty: "com.kevinguan.simpleOTP")!, accessibility: .whenUnlocked)
+        let valet = UserDefaults.standard.bool(forKey: "useiCloud") ? Valet.iCloudSharedGroupValet(with: ValetControl.getSharedGroupIdentifier(), accessibility: .whenUnlocked) : Valet.valet(with: Identifier(nonEmpty: "com.kevinguan.simpleOTP")!, accessibility: .whenUnlocked)
         do {
             try valet.setString(password, forKey: "password")
             UserDefaults.standard.set(true, forKey: "enableWatchApp")
@@ -61,7 +61,7 @@ final class SettingsViewModel: ObservableObject {
     }
 
     func disableWatchApp() -> Bool {
-        let valet = UserDefaults.standard.bool(forKey: "useiCloud") ? Valet.iCloudValet(with: Identifier(nonEmpty: "com.kevinguan.simpleOTP")!, accessibility: .whenUnlocked) : Valet.valet(with: Identifier(nonEmpty: "com.kevinguan.simpleOTP")!, accessibility: .whenUnlocked)
+        let valet = UserDefaults.standard.bool(forKey: "useiCloud") ? Valet.iCloudSharedGroupValet(with: ValetControl.getSharedGroupIdentifier(), accessibility: .whenUnlocked) : Valet.valet(with: Identifier(nonEmpty: "com.kevinguan.simpleOTP")!, accessibility: .whenUnlocked)
         do {
             try valet.removeObject(forKey: "password")
             UserDefaults.standard.set(false, forKey: "enableWatchApp")
@@ -81,7 +81,7 @@ final class SettingsViewModel: ObservableObject {
         guard self.enableiCloud == true else { return false }
 
         do {
-            let icloud = Valet.iCloudValet(with: Identifier(nonEmpty: "com.kevinguan.simpleOTP")!, accessibility: .whenUnlocked)
+            let icloud = Valet.iCloudSharedGroupValet(with: ValetControl.getSharedGroupIdentifier(), accessibility: .whenUnlocked)
             let local = Valet.valet(with: Identifier(nonEmpty: "com.kevinguan.simpleOTP")!, accessibility: .whenUnlocked)
 
             var iCloudOTPS: [OTP] = []
@@ -99,13 +99,9 @@ final class SettingsViewModel: ObservableObject {
 
                 if let data = EncryptionHelper.encodeData(iCloudOTPS) {
                     try local.setObject(data, forKey: "otps")
-                    
-                    print("\(iCloudOTPS.count) OTPs transfered to iPhone")
 
                     if iCloudPassword != nil {
                         try local.setString(iCloudPassword!, forKey: "password")
-                        
-                        print("1 Password transfered to iCloud")
                     }
                 }
             }
@@ -124,7 +120,7 @@ final class SettingsViewModel: ObservableObject {
         guard self.enableiCloud == false else { return false }
 
         do {
-            let icloud = Valet.iCloudValet(with: Identifier(nonEmpty: "com.kevinguan.simpleOTP")!, accessibility: .whenUnlocked)
+            let icloud = Valet.iCloudSharedGroupValet(with: ValetControl.getSharedGroupIdentifier(), accessibility: .whenUnlocked)
             let local = Valet.valet(with: Identifier(nonEmpty: "com.kevinguan.simpleOTP")!, accessibility: .whenUnlocked)
 
             var localOTPS: [OTP] = []
@@ -142,13 +138,9 @@ final class SettingsViewModel: ObservableObject {
 
                 if let data = EncryptionHelper.encodeData(localOTPS) {
                     try icloud.setObject(data, forKey: "otps")
-                    
-                    print("\(localOTPS.count) OTPs transfered to iCloud")
 
                     if localPassword != nil {
                         try icloud.setString(localPassword!, forKey: "password")
-                        
-                        print("1 Password transfered to iCloud")
                     }
                 }
             }
@@ -157,7 +149,7 @@ final class SettingsViewModel: ObservableObject {
             self.showAlert = true
             return false
         }
-        
+
         self.enableiCloud = true
         UserDefaults.standard.set(true, forKey: "useiCloud")
         return true

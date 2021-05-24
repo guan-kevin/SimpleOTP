@@ -1,8 +1,8 @@
 //
 //  EncryptionHelper.swift
-//  SimpleOTP
+//  SimpleOTP Mac App
 //
-//  Created by Kevin Guan on 5/18/21.
+//  Created by Kevin Guan on 5/23/21.
 //
 
 import CryptoKit

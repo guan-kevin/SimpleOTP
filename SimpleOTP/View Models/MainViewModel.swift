@@ -19,21 +19,36 @@ final class MainViewModel: ObservableObject {
 
     init() {
         print("INIT")
-        valet = UserDefaults.standard.bool(forKey: "useiCloud") ? Valet.iCloudValet(with: Identifier(nonEmpty: "com.kevinguan.simpleOTP")!, accessibility: .whenUnlocked) : Valet.valet(with: Identifier(nonEmpty: "com.kevinguan.simpleOTP")!, accessibility: .whenUnlocked)
-        list()
+        valet = UserDefaults.standard.bool(forKey: "useiCloud") ? Valet.iCloudSharedGroupValet(with: ValetControl.getSharedGroupIdentifier(), accessibility: .whenUnlocked) : Valet.valet(with: Identifier(nonEmpty: "com.kevinguan.simpleOTP")!, accessibility: .whenUnlocked)
 
         provider = WatchConnectivityProvoder()
         provider.startSession()
     }
 
     func updateValet() {
-        valet = UserDefaults.standard.bool(forKey: "useiCloud") ? Valet.iCloudValet(with: Identifier(nonEmpty: "com.kevinguan.simpleOTP")!, accessibility: .whenUnlocked) : Valet.valet(with: Identifier(nonEmpty: "com.kevinguan.simpleOTP")!, accessibility: .whenUnlocked)
+        valet = UserDefaults.standard.bool(forKey: "useiCloud") ? Valet.iCloudSharedGroupValet(with: ValetControl.getSharedGroupIdentifier(), accessibility: .whenUnlocked) : Valet.valet(with: Identifier(nonEmpty: "com.kevinguan.simpleOTP")!, accessibility: .whenUnlocked)
     }
 
     func list() {
         if valet != nil {
             if let data = try? valet!.object(forKey: "otps") {
-                otps = EncryptionHelper.decodeData(data: data, as: [OTP].self) ?? []
+                let temp = EncryptionHelper.decodeData(data: data, as: [OTP].self) ?? []
+
+                if UserDefaults.standard.bool(forKey: "useiCloud") {
+                    if otps != temp && otps != [] {
+                        if UserDefaults.standard.bool(forKey: "enableWatchApp") {
+                            if provider.session?.activationState != .activated {
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                                    self.provider.updateWatchInfo(otps: temp)
+                                }
+                            } else {
+                                provider.updateWatchInfo(otps: temp)
+                            }
+                        }
+                    }
+                }
+
+                otps = temp
             }
         }
     }

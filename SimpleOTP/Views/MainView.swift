@@ -70,6 +70,11 @@ struct MainView: View {
                     }
                     .listStyle(InsetGroupedListStyle())
                     .onReceive(timer) { result in
+                        if Int(result.timeIntervalSince1970) % 15 == 0 {
+                            if UserDefaults.standard.bool(forKey: "useiCloud") {
+                                self.model.list()
+                            }
+                        }
                         withAnimation {
                             date = result
                         }

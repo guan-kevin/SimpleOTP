@@ -22,6 +22,16 @@
 		0A205F60265990BF007EC8F0 /* OTPGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A205F5F265990BF007EC8F0 /* OTPGenerator.swift */; };
 		0A205F62265991A6007EC8F0 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A205F61265991A6007EC8F0 /* TimerView.swift */; };
 		0A205F64265A1FCA007EC8F0 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A205F63265A1FC9007EC8F0 /* InfoView.swift */; };
+		0A554C9A265B770C00B751D7 /* EncryptionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A554C99265B770C00B751D7 /* EncryptionHelper.swift */; };
+		0A554C9C265B772A00B751D7 /* OTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A554C9B265B772A00B751D7 /* OTP.swift */; };
+		0A554C9E265B773600B751D7 /* OTPType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A554C9D265B773600B751D7 /* OTPType.swift */; };
+		0A554CA2265B856E00B751D7 /* ValetControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A554CA1265B856E00B751D7 /* ValetControl.swift */; };
+		0A554CA4265C226000B751D7 /* ValetControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A554CA3265C225F00B751D7 /* ValetControl.swift */; };
+		0A554CC9265C26B800B751D7 /* SimpleOTPApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A554CC8265C26B800B751D7 /* SimpleOTPApp.swift */; };
+		0A554CCB265C26F500B751D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A554CCA265C26F500B751D7 /* AppDelegate.swift */; };
+		0A554CCD265C31D500B751D7 /* OTPGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A554CCC265C31D500B751D7 /* OTPGenerator.swift */; };
+		0A554CCF265C31F500B751D7 /* OTPRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A554CCE265C31F500B751D7 /* OTPRowView.swift */; };
+		0A554CD1265C320A00B751D7 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A554CD0265C320A00B751D7 /* TimerView.swift */; };
 		0A5D79D42652289B001E5946 /* SimpleOTPApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5D79D32652289B001E5946 /* SimpleOTPApp.swift */; };
 		0A5D79D62652289B001E5946 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5D79D52652289B001E5946 /* ContentView.swift */; };
 		0A5D79D82652289E001E5946 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A5D79D72652289E001E5946 /* Assets.xcassets */; };
@@ -48,12 +58,18 @@
 		0A9975D02654C4F900E6AABF /* AddOTPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9975CF2654C4F900E6AABF /* AddOTPView.swift */; };
 		0A99879B26538F9700723132 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A99879A26538F9700723132 /* TimerView.swift */; };
 		0ABD2BB2265B6CCC0057FB6F /* EnableiCloudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABD2BB1265B6CCC0057FB6F /* EnableiCloudView.swift */; };
+		0ABD2BD8265B73250057FB6F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABD2BD7265B73250057FB6F /* ContentView.swift */; };
+		0ABD2BDA265B73280057FB6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0ABD2BD9265B73280057FB6F /* Assets.xcassets */; };
+		0ABD2BDD265B73280057FB6F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0ABD2BDC265B73280057FB6F /* Preview Assets.xcassets */; };
+		0ABD2BE4265B75DA0057FB6F /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABD2BE3265B75DA0057FB6F /* MainView.swift */; };
+		0ABD2BE7265B76060057FB6F /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABD2BE6265B76060057FB6F /* MainViewModel.swift */; };
 		0AE9D465265777E70051691A /* WatchConnectivityProvoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE9D464265777E70051691A /* WatchConnectivityProvoder.swift */; };
 		0AE9D467265778210051691A /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE9D466265778210051691A /* MainViewModel.swift */; };
 		0AE9D46A2657814C0051691A /* BackupDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE9D4692657814C0051691A /* BackupDataView.swift */; };
 		0AFB7289265AE19100B5B5B2 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFB7288265AE19100B5B5B2 /* SearchBarView.swift */; };
 		0AFB728B265AE86E00B5B5B2 /* SearchingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFB728A265AE86D00B5B5B2 /* SearchingView.swift */; };
 		4B242008ACE6367CB67F0E5D /* Pods_SimpleOTP_WatchKit_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D24AA5D7A9FCACAE4317B25 /* Pods_SimpleOTP_WatchKit_Extension.framework */; };
+		6BEB4C4CEB3E4C233C0F26A1 /* Pods_SimpleOTP_Mac_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 596A532CD20F55E5F56EA65A /* Pods_SimpleOTP_Mac_App.framework */; };
 		8C7BAF292BAB2C0B55C5962C /* Pods_SimpleOTP_WatchKit_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B33C8FCA7256873AB56F8834 /* Pods_SimpleOTP_WatchKit_App.framework */; };
 		F7AEAF4FA6166841EFD48CE5 /* Pods_SimpleOTP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77ACF5A49E3F6B84F62C32C1 /* Pods_SimpleOTP.framework */; };
 /* End PBXBuildFile section */
@@ -115,6 +131,17 @@
 		0A205F5F265990BF007EC8F0 /* OTPGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPGenerator.swift; sourceTree = "<group>"; };
 		0A205F61265991A6007EC8F0 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		0A205F63265A1FC9007EC8F0 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
+		0A554C99265B770C00B751D7 /* EncryptionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncryptionHelper.swift; sourceTree = "<group>"; };
+		0A554C9B265B772A00B751D7 /* OTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTP.swift; sourceTree = "<group>"; };
+		0A554C9D265B773600B751D7 /* OTPType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPType.swift; sourceTree = "<group>"; };
+		0A554CA0265B7E6500B751D7 /* SimpleOTP.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SimpleOTP.entitlements; sourceTree = "<group>"; };
+		0A554CA1265B856E00B751D7 /* ValetControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValetControl.swift; sourceTree = "<group>"; };
+		0A554CA3265C225F00B751D7 /* ValetControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValetControl.swift; sourceTree = "<group>"; };
+		0A554CC8265C26B800B751D7 /* SimpleOTPApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleOTPApp.swift; sourceTree = "<group>"; };
+		0A554CCA265C26F500B751D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		0A554CCC265C31D500B751D7 /* OTPGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPGenerator.swift; sourceTree = "<group>"; };
+		0A554CCE265C31F500B751D7 /* OTPRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPRowView.swift; sourceTree = "<group>"; };
+		0A554CD0265C320A00B751D7 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		0A5D79D02652289B001E5946 /* SimpleOTP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleOTP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A5D79D32652289B001E5946 /* SimpleOTPApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleOTPApp.swift; sourceTree = "<group>"; };
 		0A5D79D52652289B001E5946 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -145,6 +172,14 @@
 		0A9975CF2654C4F900E6AABF /* AddOTPView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOTPView.swift; sourceTree = "<group>"; };
 		0A99879A26538F9700723132 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		0ABD2BB1265B6CCC0057FB6F /* EnableiCloudView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnableiCloudView.swift; sourceTree = "<group>"; };
+		0ABD2BD3265B73250057FB6F /* SimpleOTP Mac App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SimpleOTP Mac App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0ABD2BD7265B73250057FB6F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		0ABD2BD9265B73280057FB6F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0ABD2BDC265B73280057FB6F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		0ABD2BDE265B73280057FB6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0ABD2BDF265B73280057FB6F /* SimpleOTP-Mac-App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "SimpleOTP-Mac-App.entitlements"; sourceTree = "<group>"; };
+		0ABD2BE3265B75DA0057FB6F /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		0ABD2BE6265B76060057FB6F /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		0AE9D464265777E70051691A /* WatchConnectivityProvoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectivityProvoder.swift; sourceTree = "<group>"; };
 		0AE9D466265778210051691A /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		0AE9D4692657814C0051691A /* BackupDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupDataView.swift; sourceTree = "<group>"; };
@@ -152,13 +187,16 @@
 		0AFB728A265AE86D00B5B5B2 /* SearchingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchingView.swift; sourceTree = "<group>"; };
 		1D24AA5D7A9FCACAE4317B25 /* Pods_SimpleOTP_WatchKit_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SimpleOTP_WatchKit_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2364FFBA5DBBB8D86C93C5E7 /* Pods-SimpleOTP WatchKit Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleOTP WatchKit Extension.debug.xcconfig"; path = "Target Support Files/Pods-SimpleOTP WatchKit Extension/Pods-SimpleOTP WatchKit Extension.debug.xcconfig"; sourceTree = "<group>"; };
+		49ACA202D1F9E43393B67324 /* Pods-SimpleOTP Mac App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleOTP Mac App.debug.xcconfig"; path = "Target Support Files/Pods-SimpleOTP Mac App/Pods-SimpleOTP Mac App.debug.xcconfig"; sourceTree = "<group>"; };
 		553A8CEA29CA5F3CAF2B2EF5 /* Pods-SimpleOTP WatchKit App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleOTP WatchKit App.release.xcconfig"; path = "Target Support Files/Pods-SimpleOTP WatchKit App/Pods-SimpleOTP WatchKit App.release.xcconfig"; sourceTree = "<group>"; };
+		596A532CD20F55E5F56EA65A /* Pods_SimpleOTP_Mac_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SimpleOTP_Mac_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7430C1E4AFD36FCBB9DE54DD /* Pods-SimpleOTP WatchKit App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleOTP WatchKit App.debug.xcconfig"; path = "Target Support Files/Pods-SimpleOTP WatchKit App/Pods-SimpleOTP WatchKit App.debug.xcconfig"; sourceTree = "<group>"; };
 		77ACF5A49E3F6B84F62C32C1 /* Pods_SimpleOTP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SimpleOTP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B33C8FCA7256873AB56F8834 /* Pods_SimpleOTP_WatchKit_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SimpleOTP_WatchKit_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C185FE78CA9D3B60601B71C3 /* Pods-SimpleOTP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleOTP.debug.xcconfig"; path = "Target Support Files/Pods-SimpleOTP/Pods-SimpleOTP.debug.xcconfig"; sourceTree = "<group>"; };
 		DB5975136C100E896E6393A4 /* Pods-SimpleOTP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleOTP.release.xcconfig"; path = "Target Support Files/Pods-SimpleOTP/Pods-SimpleOTP.release.xcconfig"; sourceTree = "<group>"; };
 		DF59A7360D8D98FABE4D380B /* Pods-SimpleOTP WatchKit Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleOTP WatchKit Extension.release.xcconfig"; path = "Target Support Files/Pods-SimpleOTP WatchKit Extension/Pods-SimpleOTP WatchKit Extension.release.xcconfig"; sourceTree = "<group>"; };
+		F2E29C104708184B17B36D2C /* Pods-SimpleOTP Mac App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleOTP Mac App.release.xcconfig"; path = "Target Support Files/Pods-SimpleOTP Mac App/Pods-SimpleOTP Mac App.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +217,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0ABD2BD0265B73250057FB6F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6BEB4C4CEB3E4C233C0F26A1 /* Pods_SimpleOTP_Mac_App.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C6D8881B5E974FADEB402C51 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -196,6 +242,7 @@
 				77ACF5A49E3F6B84F62C32C1 /* Pods_SimpleOTP.framework */,
 				B33C8FCA7256873AB56F8834 /* Pods_SimpleOTP_WatchKit_App.framework */,
 				1D24AA5D7A9FCACAE4317B25 /* Pods_SimpleOTP_WatchKit_Extension.framework */,
+				596A532CD20F55E5F56EA65A /* Pods_SimpleOTP_Mac_App.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -229,12 +276,22 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		0A554C9F265B773B00B751D7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0A554C9B265B772A00B751D7 /* OTP.swift */,
+				0A554C9D265B773600B751D7 /* OTPType.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		0A5D79C72652289A001E5946 = {
 			isa = PBXGroup;
 			children = (
 				0A5D79D22652289B001E5946 /* SimpleOTP */,
 				0A5D79E32652289E001E5946 /* SimpleOTP WatchKit App */,
 				0A5D79EF2652289F001E5946 /* SimpleOTP WatchKit Extension */,
+				0ABD2BD4265B73250057FB6F /* SimpleOTP Mac App */,
 				0A5D79D12652289B001E5946 /* Products */,
 				B66A409462B666629B8003EF /* Pods */,
 				024A82A96D5E69FE97FA0841 /* Frameworks */,
@@ -247,6 +304,7 @@
 				0A5D79D02652289B001E5946 /* SimpleOTP.app */,
 				0A5D79DF2652289E001E5946 /* SimpleOTP WatchKit App.app */,
 				0A5D79EB2652289F001E5946 /* SimpleOTP WatchKit Extension.appex */,
+				0ABD2BD3265B73250057FB6F /* SimpleOTP Mac App.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -254,9 +312,11 @@
 		0A5D79D22652289B001E5946 /* SimpleOTP */ = {
 			isa = PBXGroup;
 			children = (
+				0A554CA0265B7E6500B751D7 /* SimpleOTP.entitlements */,
 				0A5D79D32652289B001E5946 /* SimpleOTPApp.swift */,
 				0A9975CD26549B8000E6AABF /* EncryptionHelper.swift */,
 				0A854ED42654D27C00D0AAFB /* OTPGenerator.swift */,
+				0A554CA1265B856E00B751D7 /* ValetControl.swift */,
 				0A5D7A0D265228F8001E5946 /* Models */,
 				0A5D7A0E26522904001E5946 /* Views */,
 				0A5D7A1726522948001E5946 /* View Models */,
@@ -352,6 +412,52 @@
 			path = "View Models";
 			sourceTree = "<group>";
 		};
+		0ABD2BD4265B73250057FB6F /* SimpleOTP Mac App */ = {
+			isa = PBXGroup;
+			children = (
+				0A554CCA265C26F500B751D7 /* AppDelegate.swift */,
+				0A554CC8265C26B800B751D7 /* SimpleOTPApp.swift */,
+				0A554C99265B770C00B751D7 /* EncryptionHelper.swift */,
+				0A554CCC265C31D500B751D7 /* OTPGenerator.swift */,
+				0A554CA3265C225F00B751D7 /* ValetControl.swift */,
+				0A554C9F265B773B00B751D7 /* Models */,
+				0ABD2BE5265B75F70057FB6F /* Views */,
+				0ABD2BE9265B76340057FB6F /* View Models */,
+				0ABD2BD9265B73280057FB6F /* Assets.xcassets */,
+				0ABD2BDE265B73280057FB6F /* Info.plist */,
+				0ABD2BDF265B73280057FB6F /* SimpleOTP-Mac-App.entitlements */,
+				0ABD2BDB265B73280057FB6F /* Preview Content */,
+			);
+			path = "SimpleOTP Mac App";
+			sourceTree = "<group>";
+		};
+		0ABD2BDB265B73280057FB6F /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				0ABD2BDC265B73280057FB6F /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		0ABD2BE5265B75F70057FB6F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0ABD2BD7265B73250057FB6F /* ContentView.swift */,
+				0ABD2BE3265B75DA0057FB6F /* MainView.swift */,
+				0A554CCE265C31F500B751D7 /* OTPRowView.swift */,
+				0A554CD0265C320A00B751D7 /* TimerView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0ABD2BE9265B76340057FB6F /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				0ABD2BE6265B76060057FB6F /* MainViewModel.swift */,
+			);
+			path = "View Models";
+			sourceTree = "<group>";
+		};
 		0AE9D468265778520051691A /* View Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -370,6 +476,8 @@
 				553A8CEA29CA5F3CAF2B2EF5 /* Pods-SimpleOTP WatchKit App.release.xcconfig */,
 				2364FFBA5DBBB8D86C93C5E7 /* Pods-SimpleOTP WatchKit Extension.debug.xcconfig */,
 				DF59A7360D8D98FABE4D380B /* Pods-SimpleOTP WatchKit Extension.release.xcconfig */,
+				49ACA202D1F9E43393B67324 /* Pods-SimpleOTP Mac App.debug.xcconfig */,
+				F2E29C104708184B17B36D2C /* Pods-SimpleOTP Mac App.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -439,6 +547,25 @@
 			productReference = 0A5D79EB2652289F001E5946 /* SimpleOTP WatchKit Extension.appex */;
 			productType = "com.apple.product-type.watchkit2-extension";
 		};
+		0ABD2BD2265B73250057FB6F /* SimpleOTP Mac App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0ABD2BE0265B73280057FB6F /* Build configuration list for PBXNativeTarget "SimpleOTP Mac App" */;
+			buildPhases = (
+				B95AC127E15FAD029A07BAF2 /* [CP] Check Pods Manifest.lock */,
+				0ABD2BCF265B73250057FB6F /* Sources */,
+				0ABD2BD0265B73250057FB6F /* Frameworks */,
+				0ABD2BD1265B73250057FB6F /* Resources */,
+				4C85D9D2B6269167B20E3456 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "SimpleOTP Mac App";
+			productName = "simpleOTP-mac";
+			productReference = 0ABD2BD3265B73250057FB6F /* SimpleOTP Mac App.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -455,6 +582,9 @@
 						CreatedOnToolsVersion = 12.5;
 					};
 					0A5D79EA2652289F001E5946 = {
+						CreatedOnToolsVersion = 12.5;
+					};
+					0ABD2BD2265B73250057FB6F = {
 						CreatedOnToolsVersion = 12.5;
 					};
 				};
@@ -478,6 +608,7 @@
 				0A5D79CF2652289B001E5946 /* SimpleOTP */,
 				0A5D79DE2652289E001E5946 /* SimpleOTP WatchKit App */,
 				0A5D79EA2652289F001E5946 /* SimpleOTP WatchKit Extension */,
+				0ABD2BD2265B73250057FB6F /* SimpleOTP Mac App */,
 			);
 		};
 /* End PBXProject section */
@@ -506,6 +637,15 @@
 			files = (
 				0A5D79FA265228A0001E5946 /* Preview Assets.xcassets in Resources */,
 				0A5D79F7265228A0001E5946 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0ABD2BD1265B73250057FB6F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0ABD2BDD265B73280057FB6F /* Preview Assets.xcassets in Resources */,
+				0ABD2BDA265B73280057FB6F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -556,6 +696,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		4C85D9D2B6269167B20E3456 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SimpleOTP Mac App/Pods-SimpleOTP Mac App-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SimpleOTP Mac App/Pods-SimpleOTP Mac App-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SimpleOTP Mac App/Pods-SimpleOTP Mac App-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		9091E1D0A817D8953F59F5A8 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -571,6 +728,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SimpleOTP/Pods-SimpleOTP-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B95AC127E15FAD029A07BAF2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SimpleOTP Mac App-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C7596CCD6E58D98A726E5AD7 /* [CP] Embed Pods Frameworks */ = {
@@ -639,6 +818,7 @@
 				0A17FC8C2657736D00CA505C /* WatchConnectivityProvoder.swift in Sources */,
 				0ABD2BB2265B6CCC0057FB6F /* EnableiCloudView.swift in Sources */,
 				0A5D79D42652289B001E5946 /* SimpleOTPApp.swift in Sources */,
+				0A554CA2265B856E00B751D7 /* ValetControl.swift in Sources */,
 				0AE9D46A2657814C0051691A /* BackupDataView.swift in Sources */,
 				0A854EDD2654E61900D0AAFB /* DeleteAllOTPView.swift in Sources */,
 				0A9975D02654C4F900E6AABF /* AddOTPView.swift in Sources */,
@@ -664,6 +844,25 @@
 				0A5D79F32652289F001E5946 /* SimpleOTPApp.swift in Sources */,
 				0A5D79F52652289F001E5946 /* ComplicationController.swift in Sources */,
 				0A205F60265990BF007EC8F0 /* OTPGenerator.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0ABD2BCF265B73250057FB6F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0A554C9A265B770C00B751D7 /* EncryptionHelper.swift in Sources */,
+				0ABD2BD8265B73250057FB6F /* ContentView.swift in Sources */,
+				0A554CA4265C226000B751D7 /* ValetControl.swift in Sources */,
+				0A554CCB265C26F500B751D7 /* AppDelegate.swift in Sources */,
+				0A554CC9265C26B800B751D7 /* SimpleOTPApp.swift in Sources */,
+				0A554CCD265C31D500B751D7 /* OTPGenerator.swift in Sources */,
+				0A554CD1265C320A00B751D7 /* TimerView.swift in Sources */,
+				0A554CCF265C31F500B751D7 /* OTPRowView.swift in Sources */,
+				0A554C9E265B773600B751D7 /* OTPType.swift in Sources */,
+				0ABD2BE4265B75DA0057FB6F /* MainView.swift in Sources */,
+				0A554C9C265B772A00B751D7 /* OTP.swift in Sources */,
+				0ABD2BE7265B76060057FB6F /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -894,6 +1093,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SimpleOTP/SimpleOTP.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"SimpleOTP/Preview Content\"";
 				DEVELOPMENT_TEAM = RB73R3H3RF;
@@ -918,6 +1118,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SimpleOTP/SimpleOTP.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"SimpleOTP/Preview Content\"";
 				DEVELOPMENT_TEAM = RB73R3H3RF;
@@ -934,6 +1135,56 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		0ABD2BE1265B73280057FB6F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 49ACA202D1F9E43393B67324 /* Pods-SimpleOTP Mac App.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "SimpleOTP Mac App/SimpleOTP-Mac-App.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = RB73R3H3RF;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "SimpleOTP Mac App/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.2;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kevinguan.SimpleOTP-macapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		0ABD2BE2265B73280057FB6F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F2E29C104708184B17B36D2C /* Pods-SimpleOTP Mac App.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "SimpleOTP Mac App/SimpleOTP-Mac-App.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = RB73R3H3RF;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "SimpleOTP Mac App/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.2;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kevinguan.SimpleOTP-macapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -972,6 +1223,15 @@
 			buildConfigurations = (
 				0A5D7A07265228A0001E5946 /* Debug */,
 				0A5D7A08265228A0001E5946 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0ABD2BE0265B73280057FB6F /* Build configuration list for PBXNativeTarget "SimpleOTP Mac App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0ABD2BE1265B73280057FB6F /* Debug */,
+				0ABD2BE2265B73280057FB6F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
