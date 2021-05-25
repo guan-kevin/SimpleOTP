@@ -6,12 +6,17 @@
 //
 
 import Foundation
+import SwiftUI
 import Valet
 
 final class MainViewModel: ObservableObject {
     var valet: Valet?
 
     @Published var otps: [OTP] = []
+
+    var timer: Timer?
+
+    @Published var date = Date()
 
     init() {
         print("INIT")
@@ -36,5 +41,26 @@ final class MainViewModel: ObservableObject {
                 print(error.localizedDescription)
             }
         }
+    }
+
+    @objc func updateTime() {
+        withAnimation {
+            date = Date()
+        }
+
+        if Int(date.timeIntervalSince1970) % 15 == 0 {
+            list()
+        }
+    }
+
+    func startTimer() {
+        guard timer == nil else { return }
+
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
+    }
+
+    func stopTimer() {
+        timer?.invalidate()
+        timer = nil
     }
 }

@@ -66,6 +66,7 @@
 		0AE9D465265777E70051691A /* WatchConnectivityProvoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE9D464265777E70051691A /* WatchConnectivityProvoder.swift */; };
 		0AE9D467265778210051691A /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE9D466265778210051691A /* MainViewModel.swift */; };
 		0AE9D46A2657814C0051691A /* BackupDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE9D4692657814C0051691A /* BackupDataView.swift */; };
+		0AEB20BF265C829100C9A219 /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEB20BE265C829100C9A219 /* EventMonitor.swift */; };
 		0AFB7289265AE19100B5B5B2 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFB7288265AE19100B5B5B2 /* SearchBarView.swift */; };
 		0AFB728B265AE86E00B5B5B2 /* SearchingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFB728A265AE86D00B5B5B2 /* SearchingView.swift */; };
 		4B242008ACE6367CB67F0E5D /* Pods_SimpleOTP_WatchKit_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D24AA5D7A9FCACAE4317B25 /* Pods_SimpleOTP_WatchKit_Extension.framework */; };
@@ -183,6 +184,7 @@
 		0AE9D464265777E70051691A /* WatchConnectivityProvoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectivityProvoder.swift; sourceTree = "<group>"; };
 		0AE9D466265778210051691A /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		0AE9D4692657814C0051691A /* BackupDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupDataView.swift; sourceTree = "<group>"; };
+		0AEB20BE265C829100C9A219 /* EventMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
 		0AFB7288265AE19100B5B5B2 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		0AFB728A265AE86D00B5B5B2 /* SearchingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchingView.swift; sourceTree = "<group>"; };
 		1D24AA5D7A9FCACAE4317B25 /* Pods_SimpleOTP_WatchKit_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SimpleOTP_WatchKit_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -420,6 +422,7 @@
 				0A554C99265B770C00B751D7 /* EncryptionHelper.swift */,
 				0A554CCC265C31D500B751D7 /* OTPGenerator.swift */,
 				0A554CA3265C225F00B751D7 /* ValetControl.swift */,
+				0AEB20BE265C829100C9A219 /* EventMonitor.swift */,
 				0A554C9F265B773B00B751D7 /* Models */,
 				0ABD2BE5265B75F70057FB6F /* Views */,
 				0ABD2BE9265B76340057FB6F /* View Models */,
@@ -852,6 +855,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A554C9A265B770C00B751D7 /* EncryptionHelper.swift in Sources */,
+				0AEB20BF265C829100C9A219 /* EventMonitor.swift in Sources */,
 				0ABD2BD8265B73250057FB6F /* ContentView.swift in Sources */,
 				0A554CA4265C226000B751D7 /* ValetControl.swift in Sources */,
 				0A554CCB265C26F500B751D7 /* AppDelegate.swift in Sources */,

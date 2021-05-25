@@ -9,8 +9,6 @@ import SwiftUI
 
 struct MainView: View {
     @EnvironmentObject var model: MainViewModel
-    @State var date = Date()
-    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
     var body: some View {
         VStack {
@@ -21,7 +19,7 @@ struct MainView: View {
             } else {
                 List {
                     ForEach(self.model.otps) { otp in
-                        OTPRowView(otp: otp, date: $date)
+                        OTPRowView(otp: otp, date: $model.date)
                     }
                 }
                 .listStyle(SidebarListStyle())
@@ -52,14 +50,6 @@ struct MainView: View {
         }
         .onAppear {
             self.model.list()
-        }
-        .onReceive(timer) { result in
-            if Int(result.timeIntervalSince1970) % 15 == 0 {
-                self.model.list()
-            }
-            withAnimation {
-                date = result
-            }
         }
     }
 }

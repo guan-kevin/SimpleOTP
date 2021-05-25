@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct SimpleOTPApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-    
+
     var body: some Scene {
         Settings {
             Text("Hello World?")
