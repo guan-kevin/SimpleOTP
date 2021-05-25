@@ -11,6 +11,10 @@ import SwiftUI
 struct SimpleOTPApp: App {
     @ObservedObject var model = MainViewModel()
     @Environment(\.scenePhase) var scenePhase
+    
+    @State var potentialOTP: OTP?
+    @State var showPotentialOTPAlert = false
+    @State var openedURL: URL?
 
     var body: some Scene {
         WindowGroup {
@@ -21,9 +25,9 @@ struct SimpleOTPApp: App {
                     case .active:
                         if model.isAppLocked() {
                             model.unlockApp()
+                        } else {
+                            listAndCheck()
                         }
-                        
-                        self.model.list()
                     case .background:
                         model.isLocked = true
                     case .inactive:
@@ -34,20 +38,60 @@ struct SimpleOTPApp: App {
                 })
                 .onAppear {
                     model.unlockApp()
+                    
+                    if !ValetControl.getEnableBiometrics() {
+                        // scenePhase won't change when user open the app
+                        listAndCheck()
+                    }
                 }
                 .onOpenURL { url in
-                    handleQRData(url: url)
+                    self.openedURL = url
+                }
+                .alert(isPresented: $showPotentialOTPAlert) {
+                    Alert(title: Text("SimpleOTP detected an OTP account"), message: Text("Do you want to use SimpleOTP to store this account?"), primaryButton: .default(Text("Yes")) {
+                        if self.potentialOTP != nil {
+                            self.model.addOTP(otp: self.potentialOTP!)
+                            self.potentialOTP = nil
+                        }
+                    }, secondaryButton: .cancel {
+                        self.potentialOTP = nil
+                    })
                 }
         }
     }
     
-    func handleQRData(url: URL) {
-        if url.isValidScheme() {
+    func listAndCheck() {
+        self.model.list()
+        
+        if self.openedURL != nil {
+            self.handleQRData(url: self.openedURL)
+            self.openedURL = nil
+        } else if ValetControl.getCheckPasteboard() {
+            if UIPasteboard.general.hasStrings {
+                UIPasteboard.general.detectPatterns(for: [.probableWebURL], completionHandler: { result in
+                    switch result {
+                    case .success(let detectedPatterns):
+                        if detectedPatterns.contains(.probableWebURL) {
+                            self.handleQRData(url: URL(string: UIPasteboard.general.string!))
+                            UIPasteboard.general.string = ""
+                        }
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                    }
+                })
+            }
+        }
+    }
+    
+    func handleQRData(url: URL?) {
+        guard url != nil else { return }
+        
+        if url!.isValidScheme() {
             // OTP Type
-            let type: OTPType = url.getOTPType()
+            let type: OTPType = url!.getOTPType()
         
             // Account name and Issuer
-            let labels = url.getOTPLabel()
+            let labels = url!.getOTPLabel()
             var accountname = ""
             var issuer = ""
             
@@ -61,11 +105,11 @@ struct SimpleOTPApp: App {
             }
             
             if issuer == "" {
-                issuer = url.getQuery("issuer") ?? ""
+                issuer = url!.getQuery("issuer") ?? ""
             }
             
             // Secret
-            let secret = url.getQuery("secret")?.replacingOccurrences(of: " ", with: "") ?? ""
+            let secret = url!.getQuery("secret")?.replacingOccurrences(of: " ", with: "") ?? ""
             
             if secret == "" {
                 return
@@ -73,7 +117,7 @@ struct SimpleOTPApp: App {
 
             // Algorithm
             var algorithm: Encryption
-            switch url.getQuery("algorithm")?.lowercased() {
+            switch url!.getQuery("algorithm")?.lowercased() {
             case "sha1":
                 algorithm = .sha1
             case "sha256":
@@ -85,7 +129,7 @@ struct SimpleOTPApp: App {
             }
             
             // Digit
-            let digits = url.getQuery("digits") ?? "6"
+            let digits = url!.getQuery("digits") ?? "6"
             var otp_digits: Int
                 
             if digits == "" {
@@ -106,7 +150,7 @@ struct SimpleOTPApp: App {
             var counter = ""
             var otp_counter: UInt64 = 0
             
-            if let url_counter = url.getQuery("counter") {
+            if let url_counter = url!.getQuery("counter") {
                 counter = url_counter
             }
                 
@@ -126,7 +170,7 @@ struct SimpleOTPApp: App {
             var period = ""
             var otp_period: Int = 30
             
-            if let url_period = url.getQuery("period") {
+            if let url_period = url!.getQuery("period") {
                 period = url_period
             }
             
@@ -147,7 +191,10 @@ struct SimpleOTPApp: App {
             if OTPGenerator.getOTPCode(otp: result) == nil {
                 return
             } else {
-                self.model.addOTP(otp: result)
+                if !self.model.checkIfExists(otp: result) {
+                    self.potentialOTP = result
+                    self.showPotentialOTPAlert = true
+                }
             }
         }
     }

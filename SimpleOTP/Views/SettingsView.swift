@@ -11,24 +11,24 @@ struct SettingsView: View {
     @EnvironmentObject var model: MainViewModel
     @StateObject var settingsModel = SettingsViewModel()
 
-    @AppStorage("enableBiometrics") var enableBiometrics: Bool = false
-
     @State var tempWorkaroundUUID = UUID()
 
     var body: some View {
         Group {
             Form {
                 Section(header: Text("")) {
-                    Toggle("Enable " + (self.settingsModel.getBiometricType() ?? "Face ID / Touch ID"), isOn: $enableBiometrics)
+                    Toggle("Enable " + (self.settingsModel.getBiometricType() ?? "Face ID / Touch ID"), isOn: $settingsModel.enableBiometrics)
                     NavigationLink(destination: EnableWatchAppView(settingsModel: settingsModel)) {
                         Text("Enable Watch App")
                     }
                     .id(tempWorkaroundUUID)
-                    
+
                     NavigationLink(destination: EnableiCloudView(settingsModel: settingsModel)) {
                         Text("Enable iCloud")
                     }
                     .id(tempWorkaroundUUID)
+
+                    Toggle("Enable Pasteboard Checking", isOn: $settingsModel.checkPasteboard)
                 }
 
                 Section {
@@ -41,7 +41,7 @@ struct SettingsView: View {
                     }
                     .id(tempWorkaroundUUID)
                     .disabled(self.model.otps.count == 0)
-                    
+
                     NavigationLink(destination: InfoView()) {
                         Text("Acknowledgements")
                     }

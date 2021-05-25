@@ -23,19 +23,21 @@ final class MainViewModel: ObservableObject {
 
         provider = WatchConnectivityProvoder()
         provider.startSession()
+        
+        list(sync: false)
     }
 
     func updateValet() {
         valet = UserDefaults.standard.bool(forKey: "useiCloud") ? Valet.iCloudSharedGroupValet(with: ValetControl.getSharedGroupIdentifier(), accessibility: .whenUnlocked) : Valet.valet(with: Identifier(nonEmpty: "com.kevinguan.simpleOTP")!, accessibility: .whenUnlocked)
     }
 
-    func list() {
+    func list(sync: Bool = false) {
         if valet != nil {
             if let data = try? valet!.object(forKey: "otps") {
                 let temp = EncryptionHelper.decodeData(data: data, as: [OTP].self) ?? []
 
-                if UserDefaults.standard.bool(forKey: "useiCloud") {
-                    if otps != temp && otps != [] {
+                if sync, UserDefaults.standard.bool(forKey: "useiCloud") {
+                    if otps != temp, otps != [] {
                         if UserDefaults.standard.bool(forKey: "enableWatchApp") {
                             if provider.session?.activationState != .activated {
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
@@ -51,6 +53,10 @@ final class MainViewModel: ObservableObject {
                 otps = temp
             }
         }
+    }
+
+    func checkIfExists(otp: OTP) -> Bool {
+        return otps.filter { $0.secret == otp.secret && $0.type == otp.type && $0.encryptions == otp.encryptions && $0.digits == otp.digits && $0.period == otp.period && $0.counter == otp.counter }.count > 0
     }
 
     func addOTP(otp: OTP) {
@@ -75,11 +81,11 @@ final class MainViewModel: ObservableObject {
     }
 
     func isAppLocked() -> Bool {
-        return isLocked && UserDefaults.standard.bool(forKey: "enableBiometrics")
+        return isLocked && ValetControl.getEnableBiometrics()
     }
 
     func unlockApp() {
-        guard isLocked, UserDefaults.standard.bool(forKey: "enableBiometrics") else { return }
+        guard isLocked, ValetControl.getEnableBiometrics() else { return }
 
         let laContext = LAContext()
         let reason = "Unlock SimpleOTP"

@@ -101,9 +101,14 @@ struct AddOTPView: View {
                         let result = self.addOTPModel.generateOTP()
                         
                         if result != nil {
-                            self.model.addOTP(otp: result!)
-                                
-                            self.presentation.wrappedValue.dismiss()
+                            if !self.model.checkIfExists(otp: result!) {
+                                self.model.addOTP(otp: result!)
+                                    
+                                self.presentation.wrappedValue.dismiss()
+                            } else {
+                                self.addOTPModel.alertMessage = "Account already exists!"
+                                self.addOTPModel.showAlert = true
+                            }
                         }
                     }) {
                         Text("Add")

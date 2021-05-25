@@ -15,6 +15,23 @@ final class SettingsViewModel: ObservableObject {
     @Published var showAlert = false
     @Published var alertMessage = ""
 
+    var checkedSettings = false
+
+    var previousEnableBiometrics = false
+    var previousCheckPasteboard = false
+
+    @Published var enableBiometrics = ValetControl.getEnableBiometrics() {
+        didSet {
+            ValetControl.setEnableBiometrics(on: self.enableBiometrics)
+        }
+    }
+
+    @Published var checkPasteboard = ValetControl.getCheckPasteboard() {
+        didSet {
+            ValetControl.setCheckPasteboard(on: self.checkPasteboard)
+        }
+    }
+
     func getBiometricType() -> String? {
         let laContext = LAContext()
 

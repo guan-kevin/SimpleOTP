@@ -70,6 +70,7 @@ struct MainView: View {
                     }
                     .listStyle(InsetGroupedListStyle())
                     .onReceive(timer) { result in
+                        guard !showSettings, !showAddOTP else { return }
                         if Int(result.timeIntervalSince1970) % 15 == 0 {
                             if UserDefaults.standard.bool(forKey: "useiCloud") {
                                 self.model.list()
@@ -78,6 +79,9 @@ struct MainView: View {
                         withAnimation {
                             date = result
                         }
+                    }
+                    .onAppear {
+                        date = Date()
                     }
                     .alert(isPresented: $showDeleteConfirmation) {
                         Alert(title: Text("Are you sure you want to delete this OTP"), message: Text("This OTP will be deleted immediately. You can't undo this action."), primaryButton: .destructive(Text("Delete")) {
